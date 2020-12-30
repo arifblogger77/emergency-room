@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmailsTable extends Migration
+class CreateEmailTable extends Migration
 {
     /**
      * Run the migrations.

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkersTable extends Migration
+class CreateWorkerTable extends Migration
 {
     /**
      * Run the migrations.

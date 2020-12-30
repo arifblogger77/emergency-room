@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShiftsTable extends Migration
+class CreateShiftTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateShiftsTable extends Migration
             $table->timestamp('to')->unique();
             $table->timestamps();
 
-            $table->check(['from', 'to'])->whereColumn('to', '>', 'from' );
+            $table->check(['from', 'to'])->whereColumn('to', '>', 'from');
         });
     }
 
