@@ -1,25 +1,17 @@
-<!doctype html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-    <title>ADD NEW PERSON</title>
-</head>
-
-<body>
+@section('content')
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">
                 Add New
             </div>
             <div class="card-body">
-                <a href="/person" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('person') }}" class="btn btn-primary">Kembali</a>
                 <br />
                 <br />
 
-                <form method="post" action="/person/new">
+                <form method="post" action="{{ route('person.new') }}">
 
                     {{ csrf_field() }}
 
@@ -60,6 +52,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection

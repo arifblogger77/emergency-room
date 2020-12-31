@@ -14,7 +14,7 @@ class CreateSupbyTable extends Migration
     public function up()
     {
         Schema::create('supby', function (Blueprint $table) {
-            $table->char('bedno', 3)->unique();
+            $table->string('bedno', 3)->unique();
             $table->unsignedBigInteger('nid')->unique();
             $table->unsignedBigInteger('shiftid')->unique();
 

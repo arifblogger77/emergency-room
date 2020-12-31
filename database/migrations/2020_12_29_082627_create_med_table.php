@@ -17,7 +17,7 @@ class CreateMedTable extends Migration
             $table->id('px');
             $table->unsignedBigInteger('pid')->unique();
             $table->unsignedBigInteger('did');
-            $table->char('med', 30);
+            $table->string('med', 30);
             $table->integer('dosage');
             $table->date('medfrom');
             $table->date('medto');

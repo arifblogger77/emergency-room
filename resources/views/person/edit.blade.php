@@ -1,25 +1,17 @@
-<!doctype html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-    <title>ADD NEW PERSON</title>
-</head>
-
-<body>
+@section('content')
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">
                 Edit Person
             </div>
             <div class="card-body">
-                <a href="/person" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('person') }}" class="btn btn-primary">Kembali</a>
                 <br />
                 <br />
 
-                <form method="post" action="/person/update/{{ $person->id }}">
+                <form method="post" action="{{ route('person.update', ['id' => $person->id]) }}">
 
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
@@ -27,7 +19,7 @@
                     <div class="form-group">
                         <label>Last Name</label>
                         <input type="text" name="lastname" class="form-control" placeholder="Last name"
-                            value=" {{ $person->lastname }}">
+                            value="{{ $person->lastname }}">
 
                         @if ($errors->has('lastname'))
                             <div class="text-danger">
@@ -40,7 +32,7 @@
                     <div class="form-group">
                         <label>First Name</label>
                         <input type="text" name="firstname" class="form-control" placeholder="First name"
-                            value=" {{ $person->firstname }}">
+                            value="{{ $person->firstname }}">
 
                         @if ($errors->has('firstname'))
                             <div class="text-danger">
@@ -64,6 +56,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection

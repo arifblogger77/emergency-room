@@ -14,7 +14,7 @@ class CreateBedTable extends Migration
     public function up()
     {
         Schema::create('bed', function (Blueprint $table) {
-            $table->char('number', 3)->primary();
+            $table->string('number', 3)->primary();
         });
     }
 

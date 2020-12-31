@@ -15,7 +15,7 @@ class CreateBedaTable extends Migration
     {
         Schema::create('beda', function (Blueprint $table) {
             $table->id('pid');
-            $table->char('bedno', 3)->unique();
+            $table->string('bedno', 3)->unique();
             $table->timestamp('from');
             $table->timestamp('to');
 

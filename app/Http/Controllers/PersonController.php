@@ -19,20 +19,19 @@ class PersonController extends Controller
         return view('person.add');
     }
 
-    public function new(Request $request)
-    {
+    function new (Request $request) {
         $this->validate($request, [
             'lastname' => 'required',
-            'firstname' => 'required'
+            'firstname' => 'required',
         ]);
 
         Person::create([
-            'lastname' => $request->lastname,
-            'firstname' => $request->firstname,
-            'middlename' => $request->middlename
+            'lastname' => trim($request->lastname),
+            'firstname' => trim($request->firstname),
+            'middlename' => trim($request->middlename),
         ]);
 
-        return redirect('/person');
+        return redirect()->route('person');
     }
 
     public function edit($id)
@@ -45,21 +44,21 @@ class PersonController extends Controller
     {
         $this->validate($request, [
             'lastname' => 'required',
-            'firstname' => 'required'
+            'firstname' => 'required',
         ]);
 
         $person = Person::find($id);
-        $person->lastname = $request->lastname;
-        $person->firstname = $request->firstname;
-        $person->middlename = $request->middlename;
+        $person->lastname = trim($request->lastname);
+        $person->firstname = trim($request->firstname);
+        $person->middlename = trim($request->middlename);
         $person->save();
-        return redirect('/person');
+        return redirect()->route('person');
     }
 
     public function delete($id)
     {
         $person = Person::find($id);
         $person->delete();
-        return redirect()->back();
+        return redirect()->route('person');
     }
 }

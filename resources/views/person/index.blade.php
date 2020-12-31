@@ -1,21 +1,13 @@
-<!doctype html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-    <title>Tutorial Laravel #21 : CRUD Eloquent Laravel - www.malasngoding.com</title>
-</head>
-
-<body>
+@section('content')
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">
                 Person
             </div>
             <div class="card-body">
-                <a href="/person/add" class="btn btn-primary">Input New Person</a>
+                <a href="{{ route('person.add') }}" class="btn btn-primary">Input New Person</a>
                 <br />
                 <br />
                 <table class="table table-bordered table-hover table-striped">
@@ -25,6 +17,7 @@
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,8 +28,9 @@
                                 <td>{{ $p->firstname }}</td>
                                 <td>{{ $p->middlename }}</td>
                                 <td>
-                                    <a href="/person/edit/{{ $p->id }}" class="btn btn-warning">Edit</a>
-                                    <a href="/person/delete/{{ $p->id }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('person.edit', ['id' => $p->id]) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('person.delete', ['id' => $p->id]) }}"
+                                        class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -45,6 +39,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
