@@ -15,10 +15,9 @@ class CreatePersonTable extends Migration
     {
         Schema::create('person', function (Blueprint $table) {
             $table->id();
-            $table->char("lastname", 10);
-            $table->char("firstname", 10);
-            $table->char("middlename", 10)->nullable();
-            $table->timestamps();
+            $table->char("lastname", 20);
+            $table->char("firstname", 20);
+            $table->char("middlename", 20)->nullable();
         });
     }
 

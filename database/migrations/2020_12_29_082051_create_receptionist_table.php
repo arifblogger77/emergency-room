@@ -14,8 +14,7 @@ class CreateReceptionistTable extends Migration
     public function up()
     {
         Schema::create('receptionist', function (Blueprint $table) {
-            $table->unsignedBigInteger('rid')->unique();
-            $table->timestamps();
+            $table->id('rid');
 
             $table->foreign('rid')->references('wid')->on('worker')->onDelete('cascade')->onUpdate('cascade');
         });

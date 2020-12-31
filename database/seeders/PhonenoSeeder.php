@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Phoneno;
 use Illuminate\Database\Seeder;
 
 class PhonenoSeeder extends Seeder
@@ -13,6 +14,6 @@ class PhonenoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Phoneno::factory()->count(5)->create();
     }
 }

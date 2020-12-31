@@ -18,7 +18,6 @@ class CreateAdmTable extends Migration
             $table->unsignedBigInteger('rid');
             $table->unsignedBigInteger('shiftid');
             $table->timestamp('admission');
-            $table->timestamps();
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('rid')->references('rid')->on('rons')->onDelete('cascade')->onUpdate('cascade');

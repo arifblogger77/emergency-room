@@ -14,18 +14,11 @@ class CreateHasaTable extends Migration
     public function up()
     {
         Schema::create('hasa', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
-            $table->char('province', 2)->unique();
-            $table->char('city', 10)->unique();
-            $table->char('street', 10)->unique();
-            $table->char('streetno', 6)->unique();
-            $table->timestamps();
+            $table->id('id');
+            $table->integer('address_id');
 
             $table->foreign('id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('province')->references('province')->on('address')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('city')->references('city')->on('address')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('street')->references('street')->on('address')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('streetno')->references('streetno')->on('address')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('address_id')->references('id')->on('address')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

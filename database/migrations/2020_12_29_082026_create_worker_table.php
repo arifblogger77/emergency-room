@@ -14,8 +14,7 @@ class CreateWorkerTable extends Migration
     public function up()
     {
         Schema::create('worker', function (Blueprint $table) {
-            $table->unsignedBigInteger('wid')->unique();
-            $table->timestamps();
+            $table->id('wid');
 
             $table->foreign('wid')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
         });

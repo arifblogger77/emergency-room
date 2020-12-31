@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Supby extends Model
 {
     use HasFactory;
+
+    protected $table = 'supby';
 }

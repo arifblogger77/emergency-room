@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Nons extends Model
 {
     use HasFactory;
+
+    protected $table = 'nons';
 }

@@ -14,8 +14,7 @@ class CreateDoctorTable extends Migration
     public function up()
     {
         Schema::create('doctor', function (Blueprint $table) {
-            $table->unsignedBigInteger('did')->unique();
-            $table->timestamps();
+            $table->id('did');
 
             $table->foreign('did')->references('wid')->on('worker')->onDelete('cascade')->onUpdate('cascade');
         });

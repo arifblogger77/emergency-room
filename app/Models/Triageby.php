@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Triageby extends Model
 {
     use HasFactory;
+
+    protected $table = 'triageby';
 }

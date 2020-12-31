@@ -14,9 +14,9 @@ class CreatePhonenoTable extends Migration
     public function up()
     {
         Schema::create('phoneno', function (Blueprint $table) {
-            $table->char('areacode', 3)->unique();
+            $table->id();
+            $table->char('areacode', 3);
             $table->char('number', 7)->unique();
-            $table->timestamps();
         });
     }
 

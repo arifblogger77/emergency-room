@@ -17,7 +17,6 @@ class CreateShiftTable extends Migration
             $table->id('shiftid');
             $table->timestamp('from')->unique();
             $table->timestamp('to')->unique();
-            $table->timestamps();
 
             $table->check(['from', 'to'])->whereColumn('to', '>', 'from');
         });

@@ -14,11 +14,11 @@ class CreateAddressTable extends Migration
     public function up()
     {
         Schema::create('address', function (Blueprint $table) {
-            $table->char('province', 2)->unique();
-            $table->char('city', 10)->unique();
-            $table->char('street', 10)->unique();
-            $table->char('streetno', 6)->unique();
-            $table->timestamps();
+            $table->id();
+            $table->char('province', 25);
+            $table->char('city', 25);
+            $table->char('street', 50);
+            $table->char('streetno', 6);
         });
     }
 

@@ -14,8 +14,7 @@ class CreateEmailTable extends Migration
     public function up()
     {
         Schema::create('email', function (Blueprint $table) {
-            $table->char('eaddress', 20)->unique();
-            $table->timestamps();
+            $table->char('eaddress', 50)->primary();
         });
     }
 

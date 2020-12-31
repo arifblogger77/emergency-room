@@ -14,10 +14,9 @@ class CreateCasedocTable extends Migration
     public function up()
     {
         Schema::create('casedoc', function (Blueprint $table) {
-            $table->unsignedBigInteger('pid')->unique();
+            $table->id('pid');
             $table->unsignedBigInteger('did')->unique();
             $table->unsignedBigInteger('shiftid')->unique();
-            $table->timestamps();
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('did')->references('did')->on('dons')->onDelete('cascade')->onUpdate('cascade');

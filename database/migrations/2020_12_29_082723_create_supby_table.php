@@ -17,7 +17,6 @@ class CreateSupbyTable extends Migration
             $table->char('bedno', 3)->unique();
             $table->unsignedBigInteger('nid')->unique();
             $table->unsignedBigInteger('shiftid')->unique();
-            $table->timestamps();
 
             $table->foreign('bedno')->references('number')->on('bed')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('nid')->references('nid')->on('nons')->onDelete('cascade')->onUpdate('cascade');

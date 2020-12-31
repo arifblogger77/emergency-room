@@ -14,11 +14,10 @@ class CreateBedaTable extends Migration
     public function up()
     {
         Schema::create('beda', function (Blueprint $table) {
-            $table->unsignedBigInteger('pid')->unique();
+            $table->id('pid');
             $table->char('bedno', 3)->unique();
             $table->timestamp('from');
             $table->timestamp('to');
-            $table->timestamps();
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('bedno')->references('number')->on('bed')->onDelete('cascade')->onUpdate('cascade');

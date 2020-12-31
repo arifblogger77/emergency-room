@@ -14,8 +14,7 @@ class CreateNurseTable extends Migration
     public function up()
     {
         Schema::create('nurse', function (Blueprint $table) {
-            $table->unsignedBigInteger('nid')->unique();
-            $table->timestamps();
+            $table->id('nid');
 
             $table->foreign('nid')->references('wid')->on('worker')->onDelete('cascade')->onUpdate('cascade');
         });

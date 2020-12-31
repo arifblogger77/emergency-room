@@ -14,9 +14,9 @@ class CreateMedaTable extends Migration
     public function up()
     {
         Schema::create('meda', function (Blueprint $table) {
-            $table->unsignedBigInteger('px')->unique();
-            $table->unsignedBigInteger('nid')->unique();
-            $table->unsignedBigInteger('shiftid')->unique();
+            $table->unsignedBigInteger('px');
+            $table->unsignedBigInteger('nid');
+            $table->unsignedBigInteger('shiftid');
             $table->timestamps();
 
             $table->foreign('px')->references('px')->on('med')->onDelete('cascade')->onUpdate('cascade');

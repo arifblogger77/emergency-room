@@ -14,8 +14,7 @@ class CreateMedicationTable extends Migration
     public function up()
     {
         Schema::create('medication', function (Blueprint $table) {
-            $table->char('name', 30)->unique();
-            $table->timestamps();
+            $table->char('name', 30)->primary();
         });
     }
 

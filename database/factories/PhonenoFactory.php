@@ -22,7 +22,8 @@ class PhonenoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'areacode' => '+62',
+            'number' => $this->faker->randomNumber(5),
         ];
     }
 }

@@ -22,7 +22,7 @@ class EmailFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'eaddress' => substr($this->faker->email, 0, 20),
         ];
     }
 }

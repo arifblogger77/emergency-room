@@ -14,8 +14,7 @@ class CreatePatientTable extends Migration
     public function up()
     {
         Schema::create('patient', function (Blueprint $table) {
-            $table->unsignedBigInteger('pid')->unique();
-            $table->timestamps();
+            $table->id('pid');
 
             $table->foreign('pid')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
         });
