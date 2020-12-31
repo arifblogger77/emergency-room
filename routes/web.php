@@ -21,3 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/person', 'PersonController@index')->name('person');
+Route::get('/person/add', 'PersonController@add');
+Route::post('person/new', 'PersonController@new');
+Route::get('/person/edit/{id}', 'PersonController@edit');
+Route::put('/person/update/{id}', 'PersonController@update');
+Route::get('/person/delete/{id}', 'PersonController@delete');
