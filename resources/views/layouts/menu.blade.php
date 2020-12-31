@@ -8,6 +8,9 @@
             <a class="dropdown-item" href="{{ route('person') }}">
                 {{ __('Person') }}
             </a>
+            <a class="dropdown-item" href="{{ route('bed') }}">
+                {{ __('Bed') }}
+            </a>
             <a class="dropdown-item" href="{{ route('welcome') }}">
                 {{ __('Email') }}
             </a>

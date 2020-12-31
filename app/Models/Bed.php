@@ -10,4 +10,9 @@ class Bed extends Model
     use HasFactory;
 
     protected $table = 'bed';
+
+    protected $fillable = ['number'];
+    public $timestamps = false;
+
+    protected $primaryKey = 'number';
 }
