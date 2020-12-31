@@ -10,4 +10,8 @@ class Shift extends Model
     use HasFactory;
 
     protected $table = 'shift';
+
+    protected $fillable = ['shiftid', 'from', 'to'];
+    public $timestamps = false;
+    protected $primaryKey = 'shiftid';
 }

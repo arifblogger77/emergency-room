@@ -11,6 +11,9 @@
             <a class="dropdown-item" href="{{ route('bed') }}">
                 {{ __('Bed') }}
             </a>
+            <a class="dropdown-item" href="{{ route('shift') }}">
+                {{ __('Shift') }}
+            </a>
             <a class="dropdown-item" href="{{ route('welcome') }}">
                 {{ __('Email') }}
             </a>

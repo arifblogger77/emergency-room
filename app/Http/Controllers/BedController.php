@@ -31,24 +31,6 @@ class BedController extends Controller
         return redirect()->route('bed');
     }
 
-    public function edit($id)
-    {
-        $bed = Bed::find($id);
-        return view('bed.edit', ['bed' => $bed]);
-    }
-
-    public function update($id, Request $request)
-    {
-        $this->validate($request, [
-            'number' => 'required',
-        ]);
-
-        $bed = Bed::find($id);
-        $bed->number = trim($request->number);
-        $bed->save();
-        return redirect()->route('bed');
-    }
-
     public function delete($id)
     {
         $bed = Bed::find($id);

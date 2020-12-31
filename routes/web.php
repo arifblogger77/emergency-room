@@ -35,3 +35,12 @@ Route::get('/bed', 'BedController@index')->name('bed');
 Route::get('/bed/add', 'BedController@add')->name('bed.add');
 Route::post('bed/new', 'BedController@new')->name('bed.new');
 Route::get('/bed/delete/{id}', 'BedController@delete')->name('bed.delete');
+
+
+//route shift
+Route::get('/shift', 'ShiftController@index')->name('shift');
+Route::get('/shift/add', 'ShiftController@add')->name('shift.add');
+Route::post('shift/new', 'ShiftController@new')->name('shift.new');
+Route::get('/shift/edit/{id}', 'ShiftController@edit')->name('shift.edit');
+Route::put('/shift/update/{id}', 'ShiftController@update')->name('shift.update');
+Route::get('/shift/delete/{id}', 'ShiftController@delete')->name('shift.delete');
