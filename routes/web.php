@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //route person
 Route::get('/person', 'PersonController@index')->name('person');
@@ -35,7 +35,6 @@ Route::get('/bed', 'BedController@index')->name('bed');
 Route::get('/bed/add', 'BedController@add')->name('bed.add');
 Route::post('bed/new', 'BedController@new')->name('bed.new');
 Route::get('/bed/delete/{id}', 'BedController@delete')->name('bed.delete');
-
 
 //route shift
 Route::get('/shift', 'ShiftController@index')->name('shift');
