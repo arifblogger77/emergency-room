@@ -17,6 +17,9 @@
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -27,6 +30,8 @@
                                 <td>{{ $p->lastname }}</td>
                                 <td>{{ $p->firstname }}</td>
                                 <td>{{ $p->middlename }}</td>
+                                <td>{{ Hasa::find($p->id)->get() }}
+                                </td>
                                 <td>
                                     <a href="{{ route('person.edit', ['id' => $p->id]) }}" class="btn btn-warning">Edit</a>
                                     <a href="{{ route('person.delete', ['id' => $p->id]) }}"

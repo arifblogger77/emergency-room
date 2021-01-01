@@ -10,4 +10,16 @@ class Hasa extends Model
     use HasFactory;
 
     protected $table = 'hasa';
+
+    public $timestamps = false;
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'address_id', 'id');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'id', 'id');
+    }
 }

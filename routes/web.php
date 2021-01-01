@@ -43,3 +43,11 @@ Route::post('shift/new', 'ShiftController@new')->name('shift.new');
 Route::get('/shift/edit/{id}', 'ShiftController@edit')->name('shift.edit');
 Route::put('/shift/update/{id}', 'ShiftController@update')->name('shift.update');
 Route::get('/shift/delete/{id}', 'ShiftController@delete')->name('shift.delete');
+
+//route med
+Route::get('/med', 'MedController@index')->name('med');
+Route::get('/med/add', 'MedController@add')->name('med.add');
+Route::post('med/new', 'MedController@new')->name('med.new');
+Route::get('/med/edit/{id}', 'MedController@edit')->name('med.edit');
+Route::put('/med/update/{id}', 'MedController@update')->name('med.update');
+Route::get('/med/delete/{id}', 'MedController@delete')->name('med.delete');

@@ -12,4 +12,7 @@ class Phoneno extends Model
     protected $table = 'phoneno';
 
     protected $primaryKey = 'areacode';
+    protected $fillable = ['areacode', 'number'];
+
+    public $timestamps = false;
 }

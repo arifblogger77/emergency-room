@@ -12,4 +12,7 @@ class Email extends Model
     protected $table = 'email';
 
     protected $primaryKey = 'eaddress';
+    protected $fillable = ['eaddress'];
+
+    public $timestamps = false;
 }

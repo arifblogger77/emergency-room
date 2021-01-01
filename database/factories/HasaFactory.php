@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\hasa;
+use App\Models\Address;
+use App\Models\Hasa;
+use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class HasaFactory extends Factory
@@ -22,7 +24,8 @@ class HasaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => Person::factory(),
+            'address_id' => Address::factory(),
         ];
     }
 }

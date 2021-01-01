@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Email;
 use App\Models\Person;
+use App\Models\Phoneno;
+use App\Models\Address;
+use App\Models\Hasa;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -11,6 +15,7 @@ class PersonController extends Controller
     public function index()
     {
         $person = Person::all();
+        // dd($person);
         return view('person.index', ['person' => $person]);
     }
 
@@ -19,16 +24,40 @@ class PersonController extends Controller
         return view('person.add');
     }
 
-    function new (Request $request) {
+    function new(Request $request)
+    {
         $this->validate($request, [
             'lastname' => 'required',
             'firstname' => 'required',
+            'eaddress' => 'required',
+            'areacode' => 'required',
+            'number' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            'streetno' => 'required',
         ]);
 
         Person::create([
             'lastname' => trim($request->lastname),
             'firstname' => trim($request->firstname),
             'middlename' => trim($request->middlename),
+        ]);
+
+        Email::create([
+            'eaddress' => trim($request->eaddress),
+        ]);
+
+        Phoneno::create([
+            'areacode' => trim($request->areacode),
+            'number' => trim($request->number),
+        ]);
+
+        Address::create([
+            'province' => trim($request->province),
+            'city' => trim($request->city),
+            'street' => trim($request->street),
+            'streetno' => trim($request->streetno),
         ]);
 
         return redirect()->route('person');
@@ -45,6 +74,13 @@ class PersonController extends Controller
         $this->validate($request, [
             'lastname' => 'required',
             'firstname' => 'required',
+            'eaddress' => 'required',
+            'areacode' => 'required',
+            'number' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            'streetno' => 'required',
         ]);
 
         $person = Person::find($id);

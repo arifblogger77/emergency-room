@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Hasa;
 use Illuminate\Database\Seeder;
 
 class HasaSeeder extends Seeder
@@ -13,6 +14,6 @@ class HasaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Hasa::factory()->count(5)->create();
     }
 }
