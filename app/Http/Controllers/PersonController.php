@@ -14,8 +14,7 @@ class PersonController extends Controller
 
     public function index()
     {
-        $person = Person::all();
-        // dd($person);
+        $person = Person::with(['hasa.address', 'hase.email', 'hasp.phoneno'])->get();
         return view('person.index', ['person' => $person]);
     }
 
@@ -65,7 +64,7 @@ class PersonController extends Controller
 
     public function edit($id)
     {
-        $person = Person::find($id);
+        $person = Person::find($id)->with(['hasa.address', 'hase.email', 'hasp.phoneno'])->get();
         return view('person.edit', ['person' => $person]);
     }
 

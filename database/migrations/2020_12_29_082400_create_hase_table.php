@@ -15,7 +15,7 @@ class CreateHaseTable extends Migration
     {
         Schema::create('hase', function (Blueprint $table) {
             $table->id('id');
-            $table->string('eaddress', 50)->unique();
+            $table->char('eaddress', 50)->unique();
 
             $table->foreign('id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('eaddress')->references('eaddress')->on('email')->onDelete('cascade')->onUpdate('cascade');

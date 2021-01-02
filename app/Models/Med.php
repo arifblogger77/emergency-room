@@ -17,6 +17,16 @@ class Med extends Model
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'did', 'did');
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'pid', 'pid');
+    }
+
+    public function medication()
+    {
+        return $this->belongsTo(Medication::class, 'med', 'name');
     }
 }

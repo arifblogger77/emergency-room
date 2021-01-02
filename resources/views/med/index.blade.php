@@ -28,9 +28,24 @@
                         @foreach ($med as $m)
                             <tr>
                                 <td>{{ $m->px }}</td>
-                                <td>{{ $m->firstname . ' ' . $m->firstname }}</td>
-                                <td>{{ $m->firstname }}</td>
-                                <td>{{ $m->med }}</td>
+                                <td>
+                                    @isset($m->patient->person)
+                                        {{ $m->patient->person->firstname }}
+                                        {{ $m->patient->person->middlename }}
+                                        {{ $m->patient->person->lastname }}
+                                    @endisset
+                                </td>
+                                <td>
+                                    @isset($m->doctor->person)
+                                        {{ $m->doctor->person->firstname }}
+                                        {{ $m->doctor->person->middlename }}
+                                        {{ $m->doctor->person->lastname }}
+                                    @endisset
+                                </td>
+                                <td>
+                                    @isset($m->medication->name)
+                                    @endisset
+                                </td>
                                 <td>{{ $m->dosage }}</td>
                                 <td>{{ $m->medfrom }}</td>
                                 <td>{{ $m->medto }}</td>

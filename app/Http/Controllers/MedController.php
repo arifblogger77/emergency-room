@@ -9,8 +9,7 @@ class MedController extends Controller
 {
     public function index()
     {
-        $med = Med::all();
-        //dd($med);
+        $med = Med::with(['patient.person', 'doctor.person', 'medication'])->get();
         return view('med.index', ['med' => $med]);
     }
 

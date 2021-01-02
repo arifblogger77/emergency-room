@@ -13,18 +13,13 @@ class Patient extends Model
     public $timestamps = false;
     protected $primaryKey = 'pid';
 
-    public function doctor()
-    {
-        return $this->belongsTo(Doctor::class);
-    }
-
-    public function medication()
-    {
-        return $this->hasMany(Medication::class);
-    }
-
     public function person()
     {
         return $this->belongsTo(Person::class);
+    }
+
+    public function med()
+    {
+        return $this->hasOne(Person::class, 'pid', 'pid');
     }
 }

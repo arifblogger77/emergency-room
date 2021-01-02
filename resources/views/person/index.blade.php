@@ -14,9 +14,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
@@ -26,11 +24,34 @@
                     <tbody>
                         @foreach ($person as $p)
                             <tr>
+                                {{-- {{ dd($p) }} --}}
                                 <td>{{ $p->id }}</td>
-                                <td>{{ $p->lastname }}</td>
-                                <td>{{ $p->firstname }}</td>
-                                <td>{{ $p->middlename }}</td>
-                                <td>{{ Hasa::find($p->id)->get() }}
+                                <td>
+                                    {{ $p->firstname }}
+                                    @isset($p->middlename)
+                                        {{ $p->middlename }}
+                                    @endisset
+                                    {{ $p->lastname }}
+                                </td>
+                                <td>
+                                    @isset($p->hase->email)
+                                        {{ $p->hase->eaddress }}
+                                    @endisset
+                                </td>
+                                <td>
+                                    @isset($p->hasp->phoneno)
+                                        {{ $p->hasp->areacode }}
+                                        {{ $p->hasp->number }}
+                                    @endisset
+                                </td>
+                                <td>
+
+                                    @isset($p->hasa->address)
+                                        {{ $p->hasa->address->province }},
+                                        {{ $p->hasa->address->city }},
+                                        {{ $p->hasa->address->street }},
+                                        {{ $p->hasa->address->streetno }}
+                                    @endisset
                                 </td>
                                 <td>
                                     <a href="{{ route('person.edit', ['id' => $p->id]) }}" class="btn btn-warning">Edit</a>

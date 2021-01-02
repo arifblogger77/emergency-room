@@ -10,4 +10,16 @@ class Hasp extends Model
     use HasFactory;
 
     protected $table = 'hasp';
+
+    public $timestamps = false;
+
+    public function phoneno()
+    {
+        return $this->belongsTo(Phoneno::class, 'phoneno_id', 'id');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'id', 'id');
+    }
 }
