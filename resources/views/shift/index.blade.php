@@ -3,8 +3,9 @@
 @section('content')
     <div class="container">
         <div class="card mt-5">
+            @include('layouts.alert')
             <div class="card-header text-center">
-                Person
+                Shift
             </div>
             <div class="card-body">
                 <a href="{{ route('shift.add') }}" class="btn btn-primary">Input New Shift</a>

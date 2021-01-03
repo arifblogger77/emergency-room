@@ -25,7 +25,7 @@ class HaseFactory extends Factory
     {
         return [
             'id' => Person::factory(),
-            'eaddress' => Email::factory(),
+            'email_id' => Email::factory(),
         ];
     }
 }

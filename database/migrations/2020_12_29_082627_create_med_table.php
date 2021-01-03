@@ -15,7 +15,7 @@ class CreateMedTable extends Migration
     {
         Schema::create('med', function (Blueprint $table) {
             $table->id('px');
-            $table->unsignedBigInteger('pid')->unique();
+            $table->unsignedBigInteger('pid');
             $table->unsignedBigInteger('did');
             $table->string('med', 30);
             $table->integer('dosage');

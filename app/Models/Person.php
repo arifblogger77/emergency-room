@@ -16,16 +16,17 @@ class Person extends Model
 
     public function hasa()
     {
-        return $this->hasOne(Hasa::class, 'id', 'id');
+        return $this->hasMany(Hasa::class, 'id', 'id');
     }
+
     public function hase()
     {
-        return $this->hasOne(Hase::class, 'id', 'id');
+        return $this->hasMany(Hase::class, 'id', 'id');
     }
 
     public function hasp()
     {
-        return $this->hasOne(Hasp::class, 'id', 'id');
+        return $this->hasMany(Hasp::class, 'id', 'id');
     }
 
     public function patient()
@@ -33,8 +34,8 @@ class Person extends Model
         return $this->hasOne(Patient::class, 'pid', 'pid');
     }
 
-    public function doctor()
+    public function worker()
     {
-        return $this->hasOne(Doctor::class, 'did', 'did');
+        return $this->hasOne(Worker::class, 'wid', 'wid');
     }
 }

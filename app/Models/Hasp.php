@@ -11,6 +11,8 @@ class Hasp extends Model
 
     protected $table = 'hasp';
 
+    protected $fillable = ['id', 'phoneno_id'];
+
     public $timestamps = false;
 
     public function phoneno()

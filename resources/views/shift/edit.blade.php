@@ -7,7 +7,7 @@
                 Edit Person
             </div>
             <div class="card-body">
-                <a href="{{ route('shift') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('shift') }}" class="btn btn-primary">Back</a>
                 <br />
                 <br />
 
@@ -17,8 +17,8 @@
                     {{ method_field('PUT') }}
 
                     <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="Y-m-d H:i:s" name="from" class="form-control"
+                        <label>From</label>
+                        <input type="datetime-local" name="from" class="form-control"
                             placeholder="Year-month-date Hour:minute:second" value="{{ $shift->from }}">
 
                         @if ($errors->has('from'))
@@ -31,7 +31,8 @@
 
                     <div class="form-group">
                         <label>To</label>
-                        <input type="Y-m-d H:i:s" name="to" class="form-control" placeholder="To" value="{{ $shift->to }}">
+                        <input type="datetime-local" name="to" class="form-control" placeholder="To"
+                            value="{{ $shift->to }}">
 
                         @if ($errors->has('to'))
                             <div class="text-danger">

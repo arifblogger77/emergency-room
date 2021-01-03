@@ -11,6 +11,8 @@ class Hasa extends Model
 
     protected $table = 'hasa';
 
+    protected $fillable = ['id', 'address_id'];
+
     public $timestamps = false;
 
     public function address()

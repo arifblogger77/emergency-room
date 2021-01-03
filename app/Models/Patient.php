@@ -20,6 +20,26 @@ class Patient extends Model
 
     public function med()
     {
-        return $this->hasOne(Person::class, 'pid', 'pid');
+        return $this->hasOne(Med::class, 'pid', 'pid');
+    }
+
+    public function adm()
+    {
+        return $this->hasMany(Adm::class, 'pid', 'pid');
+    }
+
+    public function beda()
+    {
+        return $this->hasMany(Beda::class, 'pid', 'pid');
+    }
+
+    public function casedoc()
+    {
+        return $this->hasMany(Casedoc::class, 'pid', 'pid');
+    }
+
+    public function triage()
+    {
+        return $this->hasMany(Triage::class, 'pid', 'pid');
     }
 }

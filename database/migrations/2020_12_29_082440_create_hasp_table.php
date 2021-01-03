@@ -15,7 +15,7 @@ class CreateHaspTable extends Migration
     {
         Schema::create('hasp', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('phoneno_id');
+            $table->integer('phoneno_id')->unique()->nullable();
 
             $table->foreign('id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('phoneno_id')->references('id')->on('phoneno')->onDelete('cascade')->onUpdate('cascade');

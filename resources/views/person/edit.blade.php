@@ -7,7 +7,7 @@
                 Edit Person
             </div>
             <div class="card-body">
-                <a href="{{ route('person') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('person') }}" class="btn btn-primary">Back</a>
                 <br />
                 <br />
 

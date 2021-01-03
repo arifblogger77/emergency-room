@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\hasp;
+use App\Models\Hasp;
+use App\Models\Person;
+use App\Models\Phoneno;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class HaspFactory extends Factory
@@ -22,7 +24,8 @@ class HaspFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => Person::factory(),
+            'phoneno_id' => Phoneno::factory(),
         ];
     }
 }

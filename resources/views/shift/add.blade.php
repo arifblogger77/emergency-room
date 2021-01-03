@@ -7,7 +7,7 @@
                 Add New
             </div>
             <div class="card-body">
-                <a href="{{ route('shift') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('shift') }}" class="btn btn-primary">Back</a>
                 <br />
                 <br />
 
@@ -16,8 +16,8 @@
                     {{ csrf_field() }}
 
                     <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="Y-m-d H:i:s" name="from" class="form-control"
+                        <label>From</label>
+                        <input type="datetime-local" name="from" class="form-control"
                             placeholder="Year-month-date Hour:minute:second">
 
                         @if ($errors->has('from'))
@@ -29,8 +29,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>First Name</label>
-                        <input type="Y-m-d H:i:s" name="to" class="form-control"
+                        <label>To</label>
+                        <input type="datetime-local" name="to" class="form-control"
                             placeholder="Year-month-date Hour:minute:second">
 
                         @if ($errors->has('to'))

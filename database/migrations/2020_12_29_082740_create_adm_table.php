@@ -14,7 +14,8 @@ class CreateAdmTable extends Migration
     public function up()
     {
         Schema::create('adm', function (Blueprint $table) {
-            $table->unsignedBigInteger('pid')->unique();
+            $table->id();
+            $table->unsignedBigInteger('pid');
             $table->unsignedBigInteger('rid');
             $table->unsignedBigInteger('shiftid');
             $table->timestamp('admission');

@@ -14,7 +14,7 @@ class CreateTriagebyTable extends Migration
     public function up()
     {
         Schema::create('triageby', function (Blueprint $table) {
-            $table->unsignedBigInteger('pid')->unique();
+            $table->unsignedBigInteger('pid');
             $table->unsignedBigInteger('did');
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');

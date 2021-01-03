@@ -15,4 +15,14 @@ class Bed extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'number';
+
+    public function beda()
+    {
+        return $this->hasMany(Beda::class, 'bedno', 'number');
+    }
+
+    public function supby()
+    {
+        return $this->hasMany(Supby::class, 'bedno', 'number');
+    }
 }

@@ -18,19 +18,22 @@ class ShiftController extends Controller
         return view('shift.add');
     }
 
-    function new(Request $request)
-    {
+    function new (Request $request) {
         $this->validate($request, [
             'from' => 'required',
             'to' => 'required',
         ]);
 
-        Shift::create([
+        $shift = Shift::create([
             'from' => trim($request->from),
-            'to' => trim($request->to)
+            'to' => trim($request->to),
         ]);
 
-        return redirect()->route('shift');
+        if ($shift) {
+            return redirect()->route('shift')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('shift')->with(['error' => 'Failed']);
+        }
     }
 
     public function edit($id)
@@ -50,13 +53,23 @@ class ShiftController extends Controller
         $shift->from = trim($request->from);
         $shift->to = trim($request->to);
         $shift->save();
-        return redirect()->route('shift');
+
+        if ($shift) {
+            return redirect()->route('shift')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('shift')->with(['error' => 'Failed']);
+        }
     }
 
     public function delete($id)
     {
         $shift = Shift::find($id);
         $shift->delete();
-        return redirect()->route('shift');
+
+        if ($shift) {
+            return redirect()->route('shift')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('shift')->with(['error' => 'Failed']);
+        }
     }
 }

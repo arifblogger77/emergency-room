@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card mt-5">
+            @include('layouts.alert')
             <div class="card-header text-center">
                 Person
             </div>
@@ -34,27 +35,27 @@
                                     {{ $p->lastname }}
                                 </td>
                                 <td>
-                                    @isset($p->hase->email)
-                                        {{ $p->hase->eaddress }}
+                                    @isset($p->hase[0]->email)
+                                        {{ $p->hase[0]->email->eaddress }}
                                     @endisset
                                 </td>
                                 <td>
-                                    @isset($p->hasp->phoneno)
-                                        {{ $p->hasp->areacode }}
-                                        {{ $p->hasp->number }}
+                                    @isset($p->hasp[0]->phoneno)
+                                        {{ $p->hasp[0]->phoneno->areacode }}
+                                        {{ $p->hasp[0]->phoneno->number }}
                                     @endisset
                                 </td>
                                 <td>
 
-                                    @isset($p->hasa->address)
-                                        {{ $p->hasa->address->province }},
-                                        {{ $p->hasa->address->city }},
-                                        {{ $p->hasa->address->street }},
-                                        {{ $p->hasa->address->streetno }}
+                                    @isset($p->hasa[0]->address)
+                                        {{ $p->hasa[0]->address->province }},
+                                        {{ $p->hasa[0]->address->city }},
+                                        {{ $p->hasa[0]->address->street }},
+                                        {{ $p->hasa[0]->address->streetno }}
                                     @endisset
                                 </td>
                                 <td>
-                                    <a href="{{ route('person.edit', ['id' => $p->id]) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('person.detail', ['id' => $p->id]) }}" class="btn btn-info">Detail</a>
                                     <a href="{{ route('person.delete', ['id' => $p->id]) }}"
                                         class="btn btn-danger">Delete</a>
                                 </td>

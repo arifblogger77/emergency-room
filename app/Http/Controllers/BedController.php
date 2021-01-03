@@ -18,23 +18,31 @@ class BedController extends Controller
         return view('bed.add');
     }
 
-    function new(Request $request)
-    {
+    function new (Request $request) {
         $this->validate($request, [
             'number' => 'required',
         ]);
 
-        Bed::create([
-            'number' => trim($request->number)
+        $bed = Bed::create([
+            'number' => trim($request->number),
         ]);
 
-        return redirect()->route('bed');
+        if ($bed) {
+            return redirect()->route('bed')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('bed')->with(['error' => 'Failed']);
+        }
     }
 
     public function delete($id)
     {
         $bed = Bed::find($id);
         $bed->delete();
-        return redirect()->route('bed');
+
+        if ($bed) {
+            return redirect()->route('bed')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('bed')->with(['error' => 'Failed']);
+        }
     }
 }

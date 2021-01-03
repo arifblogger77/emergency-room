@@ -10,4 +10,17 @@ class Dons extends Model
     use HasFactory;
 
     protected $table = 'dons';
+    public $timestamps = false;
+    protected $fillable = ['did', 'shiftid'];
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'did', 'did');
+    }
+
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class, 'shiftid', 'shiftid');
+    }
+
 }

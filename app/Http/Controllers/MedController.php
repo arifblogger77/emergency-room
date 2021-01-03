@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Med;
+use App\Models\Medication;
 use Illuminate\Http\Request;
 
 class MedController extends Controller
@@ -15,11 +16,11 @@ class MedController extends Controller
 
     public function add()
     {
-        return view('med.add');
+        $medication = Medication::all();
+        return view('med.add', ['medication' => $medication]);
     }
 
-    function new(Request $request)
-    {
+    function new (Request $request) {
         $this->validate($request, [
             'pid' => 'required',
             'did' => 'required',

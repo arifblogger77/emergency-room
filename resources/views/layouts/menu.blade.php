@@ -17,8 +17,8 @@
             <a class="dropdown-item" href="{{ route('med') }}">
                 {{ __('Med') }}
             </a>
-            <a class="dropdown-item" href="{{ route('welcome') }}">
-                {{ __('Email') }}
+            <a class="dropdown-item" href="{{ route('medication') }}">
+                {{ __('Medication') }}
             </a>
             <a class="dropdown-item" href="{{ route('welcome') }}">
                 {{ __('Phone No') }}

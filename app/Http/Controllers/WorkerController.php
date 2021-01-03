@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Worker;
 
 class WorkerController extends Controller
 {
-    //
+    public function index()
+    {
+        $worker = Worker::with(['person'])->get();
+        return view('worker.index', ['worker' => $worker]);
+    }
 }

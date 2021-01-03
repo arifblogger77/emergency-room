@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Med;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Med;
-use App\Models\Person;
 
 class Doctor extends Model
 {
@@ -17,11 +16,26 @@ class Doctor extends Model
 
     public function med()
     {
-        return $this->hasMany(Med::class);
+        return $this->hasMany(Med::class, 'did', 'did');
     }
 
-    public function person()
+    public function worker()
     {
-        return $this->belongsTo(Person::class, 'id', 'id');
+        return $this->belongsTo(Worker::class, 'wid', 'wid');
+    }
+
+    public function casedoc()
+    {
+        return $this->hasMany(Casedoc::class, 'did', 'did');
+    }
+
+    public function dons()
+    {
+        return $this->hasMany(Dons::class, 'did', 'did');
+    }
+
+    public function triage()
+    {
+        return $this->hasMany(Triage::class, 'did', 'did');
     }
 }

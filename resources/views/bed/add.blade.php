@@ -7,7 +7,7 @@
                 Add New
             </div>
             <div class="card-body">
-                <a href="{{ route('bed') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('bed') }}" class="btn btn-primary">Back</a>
                 <br />
                 <br />
 

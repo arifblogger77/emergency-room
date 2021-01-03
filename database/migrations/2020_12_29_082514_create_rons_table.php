@@ -15,7 +15,7 @@ class CreateRonsTable extends Migration
     {
         Schema::create('rons', function (Blueprint $table) {
             $table->id('rid');
-            $table->unsignedBigInteger('shiftid')->unique();
+            $table->unsignedBigInteger('shiftid');
 
             $table->foreign('rid')->references('rid')->on('receptionist')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');

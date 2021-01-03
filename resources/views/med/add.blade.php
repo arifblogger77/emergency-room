@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.select2-single').select2({
+                theme: 'bootstrap4',
+            });
+        });
+
+    </script>
+@endpush
+
 @section('content')
     <div class="container">
         <div class="card mt-5">
@@ -42,6 +53,14 @@
                     <div class="form-group">
                         <label>Medication</label>
                         <input type="text" name="med" class="form-control" placeholder="Medication">
+
+                        <select class="form-control select2-single" name="med">
+                            @forelse ($medication as $m)
+                                <option value="{{ $m->name }}">{{ $m->name }}</option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
 
                         @if ($errors->has('med'))
                             <div class="text-danger">

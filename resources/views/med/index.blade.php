@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card mt-5">
+            @include('layouts.alert')
             <div class="card-header text-center">
                 Med
             </div>

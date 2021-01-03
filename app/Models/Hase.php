@@ -11,6 +11,10 @@ class Hase extends Model
 
     protected $table = 'hase';
 
+    protected $fillable = ['id', 'email_id'];
+
+    public $incrementing = false;
+
     public $timestamps = false;
 
     public function person()
@@ -20,6 +24,6 @@ class Hase extends Model
 
     public function email()
     {
-        return $this->belongsTo(Email::class, 'eaddress', 'eaddress');
+        return $this->belongsTo(Email::class, 'email_id', 'id');
     }
 }

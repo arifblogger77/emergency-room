@@ -16,7 +16,7 @@ class CreatePhonenoTable extends Migration
         Schema::create('phoneno', function (Blueprint $table) {
             $table->id();
             $table->string('areacode', 3);
-            $table->string('number', 7)->unique();
+            $table->string('number', 7);
         });
     }
 

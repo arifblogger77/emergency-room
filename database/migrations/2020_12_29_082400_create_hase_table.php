@@ -15,10 +15,10 @@ class CreateHaseTable extends Migration
     {
         Schema::create('hase', function (Blueprint $table) {
             $table->id('id');
-            $table->char('eaddress', 50)->unique();
+            $table->unsignedBigInteger('email_id')->unique()->nullable();
 
             $table->foreign('id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('eaddress')->references('eaddress')->on('email')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('email_id')->references('id')->on('email')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

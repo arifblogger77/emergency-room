@@ -11,15 +11,12 @@ class Email extends Model
 
     protected $table = 'email';
 
-    protected $primaryKey = 'eaddress';
     protected $fillable = ['eaddress'];
-
-    public $incrementing = false;
 
     public $timestamps = false;
 
     public function hase()
     {
-        return $this->hasOne(Hase::class, 'eaddress', 'eaddress');
+        return $this->hasMany(Hase::class, 'email_id', 'id');
     }
 }

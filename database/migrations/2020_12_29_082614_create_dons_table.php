@@ -15,7 +15,7 @@ class CreateDonsTable extends Migration
     {
         Schema::create('dons', function (Blueprint $table) {
             $table->id('did');
-            $table->unsignedBigInteger('shiftid')->unique();
+            $table->unsignedBigInteger('shiftid');
 
             $table->foreign('did')->references('did')->on('doctor')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');

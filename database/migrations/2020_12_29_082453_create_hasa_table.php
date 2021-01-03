@@ -14,7 +14,7 @@ class CreateHasaTable extends Migration
     public function up()
     {
         Schema::create('hasa', function (Blueprint $table) {
-            $table->id('id');
+            $table->unsignedBigInteger('id');
             $table->integer('address_id');
 
             $table->foreign('id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');

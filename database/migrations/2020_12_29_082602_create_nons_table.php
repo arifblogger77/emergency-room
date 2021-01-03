@@ -15,7 +15,7 @@ class CreateNonsTable extends Migration
     {
         Schema::create('nons', function (Blueprint $table) {
             $table->id('nid');
-            $table->unsignedBigInteger('shiftid')->unique();
+            $table->unsignedBigInteger('shiftid');
 
             $table->foreign('nid')->references('nid')->on('nurse')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');
