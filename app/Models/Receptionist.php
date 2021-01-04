@@ -21,11 +21,11 @@ class Receptionist extends Model
 
     public function worker()
     {
-        return $this->belongsTo(Worker::class, 'wid', 'wid');
+        return $this->belongsTo(Worker::class, 'rid', 'wid');
     }
 
     public function rons()
     {
-        return $this->hasMany(Rons::class, 'rid', 'rid');
+        return $this->hasOne(Rons::class, 'rid', 'rid');
     }
 }

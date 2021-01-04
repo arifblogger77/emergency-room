@@ -21,6 +21,7 @@ Route::get('/welcome', function () {
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/interactive', 'HomeController@interactive')->name('home.interactive');
 
 //route person
 Route::get('/person', 'PersonController@index')->name('person');
@@ -89,9 +90,9 @@ Route::get('/person-status/delete-worker/{id}', 'PersonStatusController@deleteWo
 
 // worker-shift
 Route::get('/worker-shift', 'WorkerShiftController@index')->name('worker-shift');
-Route::get('/worker-shift/edit-doctor/{id}', 'WorkerShiftController@editDoctor')->name('doctor.edit');
-Route::put('/worker-shift/update-doctor/{id}', 'WorkerShiftController@updateDoctor')->name('doctor.update');
-Route::get('/worker-shift/edit-nurse/{id}', 'WorkerShiftController@editNurse')->name('nurse.edit');
-Route::put('/worker-shift/update-nurse/{id}', 'WorkerShiftController@updateNurse')->name('nurse.update');
-Route::get('/worker-shift/edit-receptionist/{id}', 'WorkerShiftController@editReceptionist')->name('receptionist.edit');
-Route::put('/worker-shift/update-receptionist/{id}', 'WorkerShiftController@updateNurse')->name('receptionist.update');
+Route::get('/worker-shift/edit-doctor/{id}', 'WorkerShiftController@editDons')->name('doctor.edit');
+Route::put('/worker-shift/update-doctor/{id}', 'WorkerShiftController@updateDons')->name('doctor.update');
+Route::get('/worker-shift/edit-nurse/{id}', 'WorkerShiftController@editNons')->name('nurse.edit');
+Route::put('/worker-shift/update-nurse/{id}', 'WorkerShiftController@updateNons')->name('nurse.update');
+Route::get('/worker-shift/edit-receptionist/{id}', 'WorkerShiftController@editRons')->name('receptionist.edit');
+Route::put('/worker-shift/update-receptionist/{id}', 'WorkerShiftController@updateRons')->name('receptionist.update');

@@ -26,6 +26,6 @@ class Nurse extends Model
 
     public function nons()
     {
-        return $this->hasMany(Nons::class, 'nid', 'nid');
+        return $this->hasOne(Nons::class, 'nid', 'nid');
     }
 }

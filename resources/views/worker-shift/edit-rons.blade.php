@@ -22,24 +22,24 @@
                 <br />
                 <br />
 
-                <form method="post" action="{{ route('doctor.update', ['id' => $dons->did]) }}">
+                <form method="post" action="{{ route('receptionist.update', ['id' => $rons->rid]) }}">
 
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
 
                     <div class="form-group">
                         <label>Name</label>
-                        <select class="form-control" name="did">
-                            <option value="{{ $dons->did }}" selected>
-                                {{ $dons->doctor->worker->person->firstname }}
-                                {{ $dons->doctor->worker->person->middlename }}
-                                {{ $dons->doctor->worker->person->lastname }}
+                        <select class="form-control" name="rid">
+                            <option value="{{ $rons->rid }}" selected>
+                                {{ $rons->receptionist->worker->person->firstname }}
+                                {{ $rons->receptionist->worker->person->middlename }}
+                                {{ $rons->receptionist->worker->person->lastname }}
                             </option>
                         </select>
 
-                        @if ($errors->has('did'))
+                        @if ($errors->has('rid'))
                             <div class="text-danger">
-                                {{ $errors->first('did') }}
+                                {{ $errors->first('rid') }}
                             </div>
                         @endif
 
@@ -49,7 +49,7 @@
                         <label>Person</label>
                         <select class="form-control select2-single" name="shiftid">
                             @forelse ($shift as $s)
-                                <option value="{{ $s->shiftid }}" {{ $s->shiftid == $dons->shiftid ? 'selected' : '' }}>
+                                <option value="{{ $s->shiftid }}" {{ $s->shiftid == $rons->shiftid ? 'selected' : '' }}>
                                     {{ $s->from }} - {{ $s->to }}
                                 </option>
                             @empty

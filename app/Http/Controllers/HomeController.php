@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -26,10 +27,19 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function query(Request $request)
+    public function interactive(Request $request)
     {
         $this->validate($request, [
-            'query' => $request->query,
+            'interactive' => 'required',
         ]);
+
+        try {
+            $interactive = DB::select(DB::raw($request->interactive));
+        } catch (\Throwable $th) {
+
+            $interactive = array('message' => 'Error query');
+        }
+
+        return response()->json($interactive, 200);
     }
 }

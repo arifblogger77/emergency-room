@@ -32,7 +32,7 @@ class Doctor extends Model
 
     public function dons()
     {
-        return $this->hasMany(Dons::class, 'did', 'did');
+        return $this->hasOne(Dons::class, 'did', 'did');
     }
 
     public function triage()

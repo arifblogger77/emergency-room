@@ -14,9 +14,9 @@ class Rons extends Model
     protected $fillable = ['rid', 'shiftid'];
     public $timestamps = false;
 
-    public function recepionist()
+    public function receptionist()
     {
-        return $this->belongsTo(receptionist::class, 'rid', 'rid');
+        return $this->belongsTo(Receptionist::class, 'rid', 'rid');
     }
 
     public function shift()

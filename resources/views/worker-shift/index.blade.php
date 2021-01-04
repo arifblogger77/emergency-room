@@ -35,6 +35,7 @@
                                     @endisset
                                 </td>
                                 <td>
+
                                     @isset($d->dons->shift)
                                         {{ $d->dons->shift->from }} - {{ $d->dons->shift->to }}
                                     @endisset

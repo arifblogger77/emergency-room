@@ -22,24 +22,24 @@
                 <br />
                 <br />
 
-                <form method="post" action="{{ route('doctor.update', ['id' => $dons->did]) }}">
+                <form method="post" action="{{ route('nurse.update', ['id' => $nons->nid]) }}">
 
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
 
                     <div class="form-group">
                         <label>Name</label>
-                        <select class="form-control" name="did">
-                            <option value="{{ $dons->did }}" selected>
-                                {{ $dons->doctor->worker->person->firstname }}
-                                {{ $dons->doctor->worker->person->middlename }}
-                                {{ $dons->doctor->worker->person->lastname }}
+                        <select class="form-control" name="nid">
+                            <option value="{{ $nons->nid }}" selected>
+                                {{ $nons->nurse->worker->person->firstname }}
+                                {{ $nons->nurse->worker->person->middlename }}
+                                {{ $nons->nurse->worker->person->lastname }}
                             </option>
                         </select>
 
-                        @if ($errors->has('did'))
+                        @if ($errors->has('nid'))
                             <div class="text-danger">
-                                {{ $errors->first('did') }}
+                                {{ $errors->first('nid') }}
                             </div>
                         @endif
 
@@ -49,7 +49,7 @@
                         <label>Person</label>
                         <select class="form-control select2-single" name="shiftid">
                             @forelse ($shift as $s)
-                                <option value="{{ $s->shiftid }}" {{ $s->shiftid == $dons->shiftid ? 'selected' : '' }}>
+                                <option value="{{ $s->shiftid }}" {{ $s->shiftid == $nons->shiftid ? 'selected' : '' }}>
                                     {{ $s->from }} - {{ $s->to }}
                                 </option>
                             @empty
