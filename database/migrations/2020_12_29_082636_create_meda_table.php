@@ -17,11 +17,10 @@ class CreateMedaTable extends Migration
             $table->unsignedBigInteger('px');
             $table->unsignedBigInteger('nid');
             $table->unsignedBigInteger('shiftid');
-            $table->timestamps();
 
             $table->foreign('px')->references('px')->on('med')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('nid')->references('nid')->on('nons')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('shiftid')->references('shiftid')->on('nons')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

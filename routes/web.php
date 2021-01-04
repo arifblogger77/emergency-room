@@ -34,21 +34,19 @@ Route::get('/person/detail/{id}', 'PersonController@detail')->name('person.detai
 //route address
 Route::get('/person/detail/{id}/add-address', 'PersonController@addAddress')->name('address.add');
 Route::post('/person/detail/{id}/new-address', 'PersonController@newAddress')->name('address.new');
-Route::get('/person/detail/{id}/edit-address', 'PersonController@editAddress')->name('address.edit');
-Route::put('/person/detail/{id}/update-address', 'PersonController@updateAddress')->name('address.update');
-Route::get('/person/detail/{id}/delete-address', 'PersonController@deleteAddress')->name('address.delete');
+Route::get('/person/detail/{id}/edit-address/{idAddress}', 'PersonController@editAddress')->name('address.edit');
+Route::put('/person/detail/{id}/update-address/{idAddress}', 'PersonController@updateAddress')->name('address.update');
+Route::get('/person/detail/{id}/delete-address/{idAddress}', 'PersonController@deleteAddress')->name('address.delete');
 
 // route email
 Route::get('/person/detail/{id}/add-email', 'PersonController@addEmail')->name('email.add');
 Route::post('/person/detail/{id}/new-email', 'PersonController@newEmail')->name('email.new');
-Route::get('/person/detail/{id}/edit-email', 'PersonController@editEmail')->name('email.edit');
-Route::post('/person/detail/{id}/delete-email', 'PersonController@deleteEmail')->name('email.delete');
+Route::get('/person/detail/{id}/delete-email/{idEmail}', 'PersonController@deleteEmail')->name('email.delete');
 
 // route phoneno
 Route::get('/person/detail/{id}/add-phoneno', 'PersonController@addPhoneno')->name('phoneno.add');
 Route::post('/person/detail/{id}/new-phoneno', 'PersonController@newPhoneno')->name('phoneno.new');
-Route::post('/person/detail/{id}/edit-phoneno', 'PersonController@editPhoneno')->name('phoneno.edit');
-Route::post('/person/detail/{id}/delete-phoneno', 'PersonController@deletePhoneno')->name('phoneno.delete');
+Route::get('/person/detail/{id}/delete-phoneno/{idPhoneno}', 'PersonController@deletePhoneno')->name('phoneno.delete');
 
 //route bed
 Route::get('/bed', 'BedController@index')->name('bed');
@@ -79,3 +77,12 @@ Route::post('medication/new', 'MedicationController@new')->name('medication.new'
 Route::get('/medication/edit/{id}', 'MedicationController@edit')->name('medication.edit');
 Route::put('/medication/update/{id}', 'MedicationController@update')->name('medication.update');
 Route::get('/medication/delete/{id}', 'MedicationController@delete')->name('medication.delete');
+
+//person status
+Route::get('/person-status', 'PersonStatusController@index')->name('status');
+Route::get('/person-status/add-patient', 'PersonStatusController@addPatient')->name('patient.add');
+Route::post('/person-status/new-patient', 'PersonStatusController@newPatient')->name('patient.new');
+Route::get('/person-status/delete-patient/{id}', 'PersonStatusController@deletePatient')->name('patient.delete');
+Route::get('/person-status/add-worker', 'PersonStatusController@addWorker')->name('worker.add');
+Route::post('/person-status/new-worker', 'PersonStatusController@newWorker')->name('worker.new');
+Route::get('/person-status/delete-worker/{id}', 'PersonStatusController@deleteWorker')->name('worker.delete');

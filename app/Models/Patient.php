@@ -10,12 +10,13 @@ class Patient extends Model
     use HasFactory;
 
     protected $table = 'patient';
-    public $timestamps = false;
     protected $primaryKey = 'pid';
+    protected $fillable = ['pid'];
+    public $timestamps = false;
 
     public function person()
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Person::class, 'pid', 'id');
     }
 
     public function med()

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,15 +15,15 @@ class Shift extends Model
     public $timestamps = false;
     protected $primaryKey = 'shiftid';
 
-    public function getFromAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d\TH:i');
-    }
+    // public function getFromAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('Y-m-d\TH:i');
+    // }
 
-    public function getToAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d\TH:i');
-    }
+    // public function getToAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('Y-m-d\TH:i');
+    // }
 
     public function adm()
     {
@@ -36,11 +35,6 @@ class Shift extends Model
         return $this->hasMany(Dons::class, 'shiftid', 'shiftid');
     }
 
-    public function meda()
-    {
-        return $this->hasMany(Meda::class, 'shiftid', 'shiftid');
-    }
-
     public function nons()
     {
         return $this->hasMany(Nons::class, 'shiftid', 'shiftid');
@@ -49,5 +43,10 @@ class Shift extends Model
     public function rons()
     {
         return $this->hasMany(Rons::class, 'shiftid', 'shiftid');
+    }
+
+    public function meda()
+    {
+        return $this->hasMany(Meda::class, 'shiftid', 'shiftid');
     }
 }

@@ -45,34 +45,16 @@
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="eaddress" class="form-control" placeholder="Email">
-
-                        @if ($errors->has('eaddress'))
-                            <div class="text-danger">
-                                {{ $errors->first('eaddress') }}
-                            </div>
-                        @endif
                     </div>
 
                     <div class="form-group">
                         <label>Area Code</label>
                         <input type="text" name="areacode" class="form-control" placeholder="62">
-
-                        @if ($errors->has('areacode'))
-                            <div class="text-danger">
-                                {{ $errors->first('areacode') }}
-                            </div>
-                        @endif
                     </div>
 
                     <div class="form-group">
                         <label>Number</label>
                         <input type="number" name="number" class="form-control" placeholder="Number">
-
-                        @if ($errors->has('number'))
-                            <div class="text-danger">
-                                {{ $errors->first('number') }}
-                            </div>
-                        @endif
                     </div>
 
                     <div class="form-group">

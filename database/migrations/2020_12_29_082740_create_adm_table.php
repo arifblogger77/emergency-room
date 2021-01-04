@@ -22,7 +22,7 @@ class CreateAdmTable extends Migration
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('rid')->references('rid')->on('rons')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('shiftid')->references('shiftid')->on('rons')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

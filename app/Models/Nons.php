@@ -10,8 +10,9 @@ class Nons extends Model
     use HasFactory;
 
     protected $table = 'nons';
-    public $timestamps = false;
+    protected $primaryKey = 'nid';
     protected $fillable = ['nid', 'shiftid'];
+    public $timestamps = false;
 
     public function nurse()
     {
@@ -22,4 +23,5 @@ class Nons extends Model
     {
         return $this->belongsTo(Shift::class, 'shiftid', 'shiftid');
     }
+
 }

@@ -12,6 +12,7 @@ class Receptionist extends Model
     protected $table = 'receptionist';
     public $timestamps = false;
     protected $primaryKey = 'rid';
+    protected $fillable = ['rid'];
 
     public function adm()
     {

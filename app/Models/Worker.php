@@ -10,8 +10,10 @@ class Worker extends Model
     use HasFactory;
 
     protected $table = 'worker';
-    public $timestamps = false;
     protected $primaryKey = 'wid';
+    protected $fillable = ['wid'];
+
+    public $timestamps = false;
 
     public function person()
     {

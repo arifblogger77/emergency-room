@@ -16,11 +16,11 @@ class CreateSupbyTable extends Migration
         Schema::create('supby', function (Blueprint $table) {
             $table->string('bedno', 3);
             $table->unsignedBigInteger('nid');
-            $table->unsignedBigInteger('shiftid');
+            $table->unsignedBigInteger('shiftid')->index();
 
             $table->foreign('bedno')->references('number')->on('bed')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('nid')->references('nid')->on('nons')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('shiftid')->references('shiftid')->on('nons')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

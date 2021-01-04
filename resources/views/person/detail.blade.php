@@ -9,7 +9,7 @@
             </div>
             <div class="card-body">
 
-                <a href="{{ route('person') }}" class="btn btn-info">Kembali</a>
+                <a href="{{ route('person') }}" class="btn btn-info">Back</a>
                 <br />
                 <br />
                 <a href="{{ route('person.edit', ['id' => $person->id]) }}" class="btn btn-primary">Edit Person</a>
@@ -71,10 +71,10 @@
 
                                     </td>
                                     <td>
-                                        <a href="{{ route('address.edit', ['id' => $hasa->address->id]) }}"
+                                        <a href="{{ route('address.edit', ['id' => $person->id, 'idAddress' => $hasa->address->id]) }}"
                                             class="btn btn-warning">Edit</a>
                                         @if ($loop->index > 0)
-                                            <a href="{{ route('address.delete', ['id' => $hasa->address->id]) }}"
+                                            <a href="{{ route('address.delete', ['id' => $person->id, 'idAddress' => $hasa->address->id]) }}"
                                                 class="btn btn-danger">Delete</a>
                                         @endif
                                     </td>
@@ -90,7 +90,7 @@
                         <tr>
                             <th>No</th>
                             <th>Areacode</th>
-                            <th>Areacode</th>
+                            <th>Number</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -114,9 +114,7 @@
                                         {{ $hasp->phoneno->number }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('phoneno.edit', ['id' => $hasp->phoneno->id]) }}"
-                                            class="btn btn-warning">Edit</a>
-                                        <a href="{{ route('phoneno.delete', ['id' => $hasp->phoneno->id]) }}"
+                                        <a href="{{ route('phoneno.delete', ['id' => $person->id, 'idPhoneno' => $hasp->phoneno->id]) }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
@@ -151,9 +149,7 @@
                                         {{ $hase->email->eaddress }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('email.edit', ['id' => $hase->email->id]) }}"
-                                            class="btn btn-warning">Edit</a>
-                                        <a href="{{ route('email.delete', ['id' => $hase->email->id]) }}"
+                                        <a href="{{ route('email.delete', ['id' => $person->id, 'idEmail' => $hase->email->id]) }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>

@@ -12,6 +12,7 @@ class Nurse extends Model
     protected $table = 'nurse';
     public $timestamps = false;
     protected $primaryKey = 'nid';
+    protected $fillable = ['nid'];
 
     public function worker()
     {

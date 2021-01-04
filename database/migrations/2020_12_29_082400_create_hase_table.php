@@ -14,7 +14,7 @@ class CreateHaseTable extends Migration
     public function up()
     {
         Schema::create('hase', function (Blueprint $table) {
-            $table->id('id');
+            $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('email_id')->unique()->nullable();
 
             $table->foreign('id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');

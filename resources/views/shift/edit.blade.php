@@ -1,5 +1,28 @@
 @extends('layouts.app')
 
+@push('scripts')
+    <script type="text/javascript">
+        $(function() {
+            $('#from').datetimepicker({
+
+                useCurrent: false,
+                format: 'YYYY-MM-DD HH:mm:ss'
+            });
+            $('#to').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#from").on("dp.change", function(e) {
+                $('#to').data("DateTimePicker").minDate(e.date);
+            });
+            $("#to").on("dp.change", function(e) {
+                $('#from').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+
+    </script>
+@endpush
+
 @section('content')
     <div class="container">
         <div class="card mt-5">
@@ -18,7 +41,7 @@
 
                     <div class="form-group">
                         <label>From</label>
-                        <input type="datetime-local" name="from" class="form-control"
+                        <input type="text" name="from" class="form-control" id="from"
                             placeholder="Year-month-date Hour:minute:second" value="{{ $shift->from }}">
 
                         @if ($errors->has('from'))
@@ -31,8 +54,8 @@
 
                     <div class="form-group">
                         <label>To</label>
-                        <input type="datetime-local" name="to" class="form-control" placeholder="To"
-                            value="{{ $shift->to }}">
+                        <input type="text" name="to" class="form-control" id="to"
+                            placeholder="Year-month-date Hour:minute:second" value="{{ $shift->to }}">
 
                         @if ($errors->has('to'))
                             <div class="text-danger">

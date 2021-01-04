@@ -16,11 +16,11 @@ class CreateCasedocTable extends Migration
         Schema::create('casedoc', function (Blueprint $table) {
             $table->id('pid');
             $table->unsignedBigInteger('did');
-            $table->unsignedBigInteger('shiftid');
+            $table->unsignedBigInteger('shiftid')->index();
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('did')->references('did')->on('dons')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('shiftid')->references('shiftid')->on('dons')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shiftid')->references('shiftid')->on('shift')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

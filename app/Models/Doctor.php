@@ -13,6 +13,7 @@ class Doctor extends Model
     protected $table = 'doctor';
     public $timestamps = false;
     protected $primaryKey = 'did';
+    protected $fillable = ['did'];
 
     public function med()
     {

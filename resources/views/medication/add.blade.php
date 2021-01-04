@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">
-                Add New
+                Add Medication
             </div>
             <div class="card-body">
                 <a href="{{ route('medication') }}" class="btn btn-primary">Back</a>

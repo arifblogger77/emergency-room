@@ -10,8 +10,9 @@ class Dons extends Model
     use HasFactory;
 
     protected $table = 'dons';
-    public $timestamps = false;
+    protected $primaryKey = 'did';
     protected $fillable = ['did', 'shiftid'];
+    public $timestamps = false;
 
     public function doctor()
     {

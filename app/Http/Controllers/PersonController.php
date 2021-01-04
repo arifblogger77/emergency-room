@@ -17,7 +17,6 @@ class PersonController extends Controller
     public function index()
     {
         $person = Person::with(['hasa.address', 'hasp.phoneno', 'hase.email'])->get();
-        // dd($person);
         return view('person.index', ['person' => $person]);
     }
 
@@ -30,9 +29,6 @@ class PersonController extends Controller
         $this->validate($request, [
             'lastname' => 'required',
             'firstname' => 'required',
-            // 'eaddress' => 'required',
-            // 'areacode' => 'required',
-            // 'number' => 'required',
             'province' => 'required',
             'city' => 'required',
             'street' => 'required',
@@ -89,8 +85,13 @@ class PersonController extends Controller
 
     public function edit($id)
     {
-        $person = Person::find($id)->load(['hasa.address', 'hase.email', 'hasp.phoneno']);
-        // dd($person);
+        $person = Person::find($id);
+
+        if (empty($person)) {
+            return redirect()->route('person');
+        }
+
+        $person->load(['hasa.address', 'hase.email', 'hasp.phoneno']);
         return view('person.edit', ['person' => $person]);
     }
 
@@ -102,24 +103,49 @@ class PersonController extends Controller
         ]);
 
         $person = Person::find($id);
+
+        if (empty($person)) {
+            return redirect()->route('person');
+        }
+
         $person->lastname = trim($request->lastname);
         $person->firstname = trim($request->firstname);
         $person->middlename = trim($request->middlename);
         $person->save();
-        return redirect()->route('person');
+
+        if ($person) {
+            return redirect()->route('person')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person')->with(['error' => 'Failed']);
+        }
     }
 
     public function delete($id)
     {
         $person = Person::find($id);
+
+        if (empty($person)) {
+            return redirect()->route('person');
+        }
+
         $person->delete();
-        return redirect()->route('person');
+
+        if ($person) {
+            return redirect()->route('person')->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person')->with(['error' => 'Failed']);
+        }
     }
 
     public function detail($id)
     {
-        $person = Person::find($id)->load(['hasa.address', 'hase.email', 'hasp.phoneno']);
-        // dd($person);
+        $person = Person::find($id);
+
+        if (empty($person)) {
+            return redirect()->route('person');
+        }
+
+        $person->load(['hasa.address', 'hase.email', 'hasp.phoneno']);
         return view('person.detail', ['person' => $person]);
     }
 
@@ -137,6 +163,7 @@ class PersonController extends Controller
             'street' => 'required',
             'streetno' => 'required',
         ]);
+
         $address = Address::create([
             'province' => trim($request->province),
             'city' => trim($request->city),
@@ -144,21 +171,30 @@ class PersonController extends Controller
             'streetno' => trim($request->streetno),
         ]);
 
-        Hasa::create([
+        $hasa = Hasa::create([
             'id' => $id,
             'address_id' => $address->id,
         ]);
 
-        return redirect()->route('person.detail', ['id' => $id]);
+        if ($hasa) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 
-    public function editAddress($id)
+    public function editAddress($id, $idAddress)
     {
-        $address = Person::find($id)->load(['hasa.address']);
-        return view('address.edit', ['address' => $address]);
+        $address = Address::find($idAddress);
+
+        if (empty($address)) {
+            return redirect()->route('person');
+        }
+
+        return view('address.edit', ['id' => $id, 'address' => $address]);
     }
 
-    public function updateAddress(Request $request, $id)
+    public function updateAddress(Request $request, $id, $idAddress)
     {
         $this->validate($request, [
             'province' => 'required',
@@ -167,105 +203,127 @@ class PersonController extends Controller
             'streetno' => 'required',
         ]);
 
-        $address = Address::find($id);
+        $address = Address::find($idAddress);
+
+        if (empty($address)) {
+            return redirect()->route('person');
+        }
+
         $address->province = trim($request->province);
         $address->city = trim($request->city);
         $address->street = trim($request->street);
         $address->streetno = trim($request->streetno);
         $address->save();
-        return redirect()->route('person.detail', ['id' => $id]);
+
+        if ($address) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 
-    public function deleteAddress($id)
+    public function deleteAddress($id, $idAddress)
     {
-        $address = Address::find($id);
+        $address = Address::find($idAddress);
+
+        if (empty($address)) {
+            return redirect()->route('person');
+        }
+
         $address->delete();
-        return redirect()->route('person.detail', ['id' => $id]);
+
+        if ($address) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 
     // Detail Email
-    public function addEmail()
+    public function addEmail($id)
     {
-        return view('email.add');
+        return view('email.add', ['id' => $id]);
     }
 
-    public function newEmail(Request $request)
-    {
-        $this->validate($request, [
-            'eaddres' => 'required',
-        ]);
-        $email = Email::create([
-            'eaddres' => trim($request->eaddres),
-        ]);
-    }
-
-    public function editEmail($id)
-    {
-        $email = Person::find($id)->load(['hase.email']);
-        return view('email.edit', ['email' => $email]);
-    }
-
-    public function updateEmail(Request $request, $id)
+    public function newEmail(Request $request, $id)
     {
         $this->validate($request, [
             'eaddress' => 'required',
         ]);
+        $email = Email::create([
+            'eaddress' => trim($request->eaddress),
+        ]);
+        $hase = Hase::create([
+            'id' => $id,
+            'email_id' => $email->id,
+        ]);
 
-        $email = Email::find($id);
-        $email->eaddress = trim($request->eaddress);
-        $email->save();
-        return redirect()->route('person.detail', ['id' => $id]);
+        if ($hase) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 
-    public function deleteEmail($id)
+    public function deleteEmail($id, $idEmail)
     {
-        $email = Email::find($id);
+        $email = Email::find($idEmail);
+
+        if (empty($email)) {
+            return redirect()->route('person');
+        }
+
         $email->delete();
-        return redirect()->route('person.detail', ['id' => $id]);
+
+        if ($email) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 
     // Detail Phoneno
-    public function addPhoneno()
+    public function addPhoneno($id)
     {
-        return view('phoneno.add');
+        return view('phoneno.add', ['id' => $id]);
     }
 
-    public function newPhoneno(Request $request)
+    public function newPhoneno(Request $request, $id)
     {
         $this->validate($request, [
-            'areacode' => 'required',
-            'number' => 'required',
+            'areacode' => 'required|numeric',
+            'number' => 'required|numeric',
         ]);
         $phoneno = Phoneno::create([
-            'eaddres' => trim($request->eaddres),
+            'areacode' => trim($request->areacode),
             'number' => trim($request->number),
         ]);
-    }
-
-    public function editPhoneno($id)
-    {
-        $phoneno = Person::find($id)->load(['hasp.phoneno']);
-        return view('phoneno.edit', ['phoneno' => $phoneno]);
-    }
-
-    public function updatePhoneno(Request $request, $id)
-    {
-        $this->validate($request, [
-            'areacode' => 'required',
-            'number' => 'required',
+        $hasp = Hasp::create([
+            'id' => $id,
+            'phoneno_id' => $phoneno->id,
         ]);
 
-        $phoneno = Phoneno::find($id);
-        $phoneno->areacode = trim($request->areacode);
-        $phoneno->number = trim($request->number);
-        $phoneno->save();
-        return redirect()->route('person.detail', ['id' => $id]);
+        if ($hasp) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 
-    public function deletePhoneno($id)
+    public function deletePhoneno($id, $idPhoneno)
     {
-        $phoneno = Phoneno::find($id);
+        $phoneno = Phoneno::find($idPhoneno);
+
+        if (empty($phoneno)) {
+            return redirect()->route('person');
+        }
+
         $phoneno->delete();
-        return redirect()->route('person.detail', ['id' => $id]);
+
+        if ($phoneno) {
+            return redirect()->route('person.detail', ['id' => $id])->with(['success' => 'Success']);
+        } else {
+            return redirect()->route('person.detail', ['id' => $id])->with(['error' => 'Failed']);
+        }
     }
 }

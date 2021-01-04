@@ -52,7 +52,6 @@
 
                     <div class="form-group">
                         <label>Medication</label>
-                        <input type="text" name="med" class="form-control" placeholder="Medication">
 
                         <select class="form-control select2-single" name="med">
                             @forelse ($medication as $m)

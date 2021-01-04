@@ -10,8 +10,9 @@ class Rons extends Model
     use HasFactory;
 
     protected $table = 'rons';
-    public $timestamps = false;
+    protected $primaryKey = 'rid';
     protected $fillable = ['rid', 'shiftid'];
+    public $timestamps = false;
 
     public function recepionist()
     {
