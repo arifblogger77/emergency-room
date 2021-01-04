@@ -46,32 +46,36 @@
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Name</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($worker as $p)
+                        @foreach ($worker as $w)
                             <tr>
-                                <td>{{ $p->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    {{ $p->firstname }}
-                                    @isset($p->middlename)
-                                        {{ $p->middlename }}
+                                    @isset($w->person)
+                                        {{ $w->person->firstname }}
+                                        {{ $w->person->middlename }}
+                                        {{ $w->person->lastname }}
                                     @endisset
-                                    {{ $p->lastname }}
                                 </td>
                                 <td>
-                                    {{ $p->firstname }}
-                                    @isset($p->middlename)
-                                        {{ $p->middlename }}
+                                    @isset($w->nurse)
+                                        {{ 'Nurse' }}
                                     @endisset
-                                    {{ $p->lastname }}
+                                    @isset($w->doctor)
+                                        {{ 'Doctor' }}
+                                    @endisset
+                                    @isset($w->receptionist)
+                                        {{ 'Receptionist' }}
+                                    @endisset
                                 </td>
                                 <td>
-                                    <a href="{{ route('worker.delete', ['id' => $p->wid]) }}"
+                                    <a href="{{ route('worker.delete', ['id' => $w->wid]) }}"
                                         class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

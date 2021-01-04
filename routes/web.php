@@ -86,3 +86,12 @@ Route::get('/person-status/delete-patient/{id}', 'PersonStatusController@deleteP
 Route::get('/person-status/add-worker', 'PersonStatusController@addWorker')->name('worker.add');
 Route::post('/person-status/new-worker', 'PersonStatusController@newWorker')->name('worker.new');
 Route::get('/person-status/delete-worker/{id}', 'PersonStatusController@deleteWorker')->name('worker.delete');
+
+// worker-shift
+Route::get('/worker-shift', 'WorkerShiftController@index')->name('worker-shift');
+Route::get('/worker-shift/edit-doctor/{id}', 'WorkerShiftController@editDoctor')->name('doctor.edit');
+Route::put('/worker-shift/update-doctor/{id}', 'WorkerShiftController@updateDoctor')->name('doctor.update');
+Route::get('/worker-shift/edit-nurse/{id}', 'WorkerShiftController@editNurse')->name('nurse.edit');
+Route::put('/worker-shift/update-nurse/{id}', 'WorkerShiftController@updateNurse')->name('nurse.update');
+Route::get('/worker-shift/edit-receptionist/{id}', 'WorkerShiftController@editReceptionist')->name('receptionist.edit');
+Route::put('/worker-shift/update-receptionist/{id}', 'WorkerShiftController@updateNurse')->name('receptionist.update');

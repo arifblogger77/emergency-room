@@ -22,7 +22,7 @@ class Doctor extends Model
 
     public function worker()
     {
-        return $this->belongsTo(Worker::class, 'wid', 'wid');
+        return $this->belongsTo(Worker::class, 'did', 'wid');
     }
 
     public function casedoc()

@@ -32,21 +32,21 @@ class Shift extends Model
 
     public function dons()
     {
-        return $this->hasMany(Dons::class, 'shiftid', 'shiftid');
+        return $this->hasOne(Dons::class, 'shiftid', 'shiftid');
     }
 
     public function nons()
     {
-        return $this->hasMany(Nons::class, 'shiftid', 'shiftid');
+        return $this->hasOne(Nons::class, 'shiftid', 'shiftid');
     }
 
     public function rons()
     {
-        return $this->hasMany(Rons::class, 'shiftid', 'shiftid');
+        return $this->hasOne(Rons::class, 'shiftid', 'shiftid');
     }
 
     public function meda()
     {
-        return $this->hasMany(Meda::class, 'shiftid', 'shiftid');
+        return $this->hasOne(Meda::class, 'shiftid', 'shiftid');
     }
 }

@@ -18,9 +18,10 @@ class BedController extends Controller
         return view('bed.add');
     }
 
-    function new (Request $request) {
+    function new(Request $request)
+    {
         $this->validate($request, [
-            'number' => 'required',
+            'number' => 'required|numeric',
         ]);
 
         $bed = Bed::create([

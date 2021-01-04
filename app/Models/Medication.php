@@ -11,15 +11,12 @@ class Medication extends Model
 
     protected $table = 'medication';
 
-    protected $primaryKey = 'name';
     protected $fillable = ['name'];
-
-    public $incrementing = false;
 
     public $timestamps = false;
 
     public function med()
     {
-        return $this->hasMany(Hase::class, 'med', 'name');
+        return $this->hasMany(Med::class, 'medication_id', 'id');
     }
 }

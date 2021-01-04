@@ -27,8 +27,16 @@
                     {{ csrf_field() }}
 
                     <div class="form-group">
-                        <label>Patient id</label>
-                        <input type="text" name="pid" class="form-control" placeholder="Patient id">
+                        <label>Patient</label>
+                        <select class="form-control select2-single" name="pid">
+                            @forelse ($patient as $p)
+                                <option value="{{ $p->pid }}">{{ $p->person->firstname }} {{ $p->person->middlename }}
+                                    {{ $p->person->lastname }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
 
                         @if ($errors->has('pid'))
                             <div class="text-danger">
@@ -39,8 +47,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Doctor id</label>
-                        <input type="text" name="did" class="form-control" placeholder="Doctor id">
+                        <label>Doctor</label>
+                        <select class="form-control select2-single" name="did">
+                            @forelse ($doctor as $d)
+                                <option value="{{ $d->did }}">{{ $d->worker->person->firstname }}
+                                    {{ $d->worker->person->middlename }}
+                                    {{ $d->worker->person->lastname }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
 
                         @if ($errors->has('did'))
                             <div class="text-danger">
@@ -53,17 +70,17 @@
                     <div class="form-group">
                         <label>Medication</label>
 
-                        <select class="form-control select2-single" name="med">
+                        <select class="form-control select2-single" name="medication_id">
                             @forelse ($medication as $m)
-                                <option value="{{ $m->name }}">{{ $m->name }}</option>
+                                <option value="{{ $m->id }}">{{ $m->name }}</option>
                             @empty
                                 <option value="">-</option>
                             @endforelse
                         </select>
 
-                        @if ($errors->has('med'))
+                        @if ($errors->has('medication_id'))
                             <div class="text-danger">
-                                {{ $errors->first('med') }}
+                                {{ $errors->first('medication_id') }}
                             </div>
                         @endif
 
@@ -83,7 +100,7 @@
 
                     <div class="form-group">
                         <label>Med from</label>
-                        <input type="Y-m-d" name="medfrom" class="form-control" placeholder="Date from">
+                        <input type="date" name="medfrom" class="form-control" placeholder="Date from">
 
                         @if ($errors->has('medfrom'))
                             <div class="text-danger">
@@ -95,7 +112,7 @@
 
                     <div class="form-group">
                         <label>Med to</label>
-                        <input type="Y-m-d" name="medto" class="form-control" placeholder="Date to">
+                        <input type="date" name="medto" class="form-control" placeholder="Date to">
 
                         @if ($errors->has('medto'))
                             <div class="text-danger">

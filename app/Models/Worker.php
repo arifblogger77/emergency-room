@@ -17,7 +17,7 @@ class Worker extends Model
 
     public function person()
     {
-        return $this->belongsTo(Person::class, 'id', 'id');
+        return $this->belongsTo(Person::class, 'wid', 'id');
     }
 
     public function doctor()
@@ -27,11 +27,11 @@ class Worker extends Model
 
     public function nurse()
     {
-        return $this->hasOne(Doctor::class, 'nid', 'wid');
+        return $this->hasOne(Nurse::class, 'nid', 'wid');
     }
 
-    public function reseptionist()
+    public function receptionist()
     {
-        return $this->hasOne(Reseptionist::class, 'rid', 'wid');
+        return $this->hasOne(Receptionist::class, 'rid', 'wid');
     }
 }

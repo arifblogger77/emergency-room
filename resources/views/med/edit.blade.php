@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.select2-single').select2({
+                theme: 'bootstrap4',
+            });
+        });
+
+    </script>
+@endpush
+
 @section('content')
     <div class="container">
         <div class="card mt-5">
@@ -17,8 +28,17 @@
                     {{ method_field('PUT') }}
 
                     <div class="form-group">
-                        <label>Patient id</label>
-                        <input type="text" name="pid" class="form-control" placeholder="Patient id" value="{{ $med->pid }}">
+                        <label>Patient</label>
+                        <select class="form-control select2-single" name="pid">
+                            @forelse ($patient as $p)
+                                <option value="{{ $p->pid }}" {{ $p->pid == $med->pid ? 'selected' : '' }}>
+                                    {{ $p->person->firstname }} {{ $p->person->middlename }}
+                                    {{ $p->person->lastname }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
 
                         @if ($errors->has('pid'))
                             <div class="text-danger">
@@ -29,8 +49,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Doctor id</label>
-                        <input type="text" name="did" class="form-control" placeholder="Doctor id" value="{{ $med->did }}">
+                        <label>Doctor</label>
+                        <select class="form-control select2-single" name="did">
+                            @forelse ($doctor as $d)
+                                <option value="{{ $d->did }}" {{ $p->pid == $med->pid ? 'selected' : '' }}>
+                                    {{ $d->worker->person->firstname }}
+                                    {{ $d->worker->person->middlename }}
+                                    {{ $d->worker->person->lastname }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
 
                         @if ($errors->has('did'))
                             <div class="text-danger">
@@ -42,7 +72,15 @@
 
                     <div class="form-group">
                         <label>Medication</label>
-                        <input type="text" name="med" class="form-control" placeholder="Medication" value="{{ $med->med }}">
+                        <select class="form-control select2-single" name="medication_id">
+                            @forelse ($medication as $m)
+                                <option value="{{ $m->id }}" {{ $m->id == $med->medication_id ? 'selected' : '' }}>
+                                    {{ $m->name }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
 
                         @if ($errors->has('med'))
                             <div class="text-danger">
@@ -67,7 +105,7 @@
 
                     <div class="form-group">
                         <label>Med from</label>
-                        <input type="Y-m-d" name="medfrom" class="form-control" placeholder="Date from"
+                        <input type="date" name="medfrom" class="form-control" placeholder="Date from"
                             value="{{ $med->medfrom }}">
 
                         @if ($errors->has('medfrom'))
@@ -80,7 +118,7 @@
 
                     <div class="form-group">
                         <label>Med to</label>
-                        <input type="Y-m-d" name="medto" class="form-control" placeholder="Date to"
+                        <input type="date" name="medto" class="form-control" placeholder="Date to"
                             value="{{ $med->medto }}">
 
                         @if ($errors->has('medto'))

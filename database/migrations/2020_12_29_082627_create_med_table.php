@@ -17,7 +17,7 @@ class CreateMedTable extends Migration
             $table->id('px');
             $table->unsignedBigInteger('pid');
             $table->unsignedBigInteger('did');
-            $table->string('med', 30);
+            $table->unsignedBigInteger('medication_id');
             $table->integer('dosage');
             $table->date('medfrom');
             $table->date('medto');
@@ -25,7 +25,7 @@ class CreateMedTable extends Migration
 
             $table->foreign('pid')->references('pid')->on('patient')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('did')->references('did')->on('doctor')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('med')->references('name')->on('medication')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('medication_id')->references('id')->on('medication')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

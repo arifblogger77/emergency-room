@@ -8,9 +8,6 @@
             <a class="dropdown-item" href="{{ route('person') }}">
                 {{ __('Person') }}
             </a>
-            <a class="dropdown-item" href="{{ route('status') }}">
-                {{ __('Status') }}
-            </a>
             <a class="dropdown-item" href="{{ route('shift') }}">
                 {{ __('Shift') }}
             </a>
@@ -20,11 +17,14 @@
             <a class="dropdown-item" href="{{ route('medication') }}">
                 {{ __('Medication') }}
             </a>
+            <a class="dropdown-item" href="{{ route('status') }}">
+                {{ __('Status') }}
+            </a>
+            <a class="dropdown-item" href="{{ route('worker-shift') }}">
+                {{ __('Worker Shift') }}
+            </a>
             <a class="dropdown-item" href="{{ route('med') }}">
                 {{ __('Med') }}
-            </a>
-            <a class="dropdown-item" href="{{ route('welcome') }}">
-                {{ __('Phone Address') }}
             </a>
         </div>
 

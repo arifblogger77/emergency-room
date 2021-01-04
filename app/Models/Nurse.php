@@ -16,7 +16,7 @@ class Nurse extends Model
 
     public function worker()
     {
-        return $this->belongsTo(Worker::class, 'wid', 'wid');
+        return $this->belongsTo(Worker::class, 'nid', 'wid');
     }
 
     public function meda()

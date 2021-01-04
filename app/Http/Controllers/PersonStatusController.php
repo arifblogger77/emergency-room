@@ -8,6 +8,7 @@ use App\Models\Nons;
 use App\Models\Nurse;
 use App\Models\Patient;
 use App\Models\Person;
+use App\Models\Receptionist;
 use App\Models\Rons;
 use App\Models\Shift;
 use App\Models\Worker;
@@ -18,7 +19,7 @@ class PersonStatusController extends Controller
     public function index()
     {
         $patient = Patient::with(['person'])->get();
-        $worker = Worker::with(['person'])->get();
+        $worker = Worker::with(['nurse', 'receptionist', 'doctor'])->get();
         return view('person-status.index', ['patient' => $patient, 'worker' => $worker]);
     }
 
@@ -69,6 +70,7 @@ class PersonStatusController extends Controller
         return view('person-status.add-worker', ['person' => $person, 'shift' => $shift]);
     }
 
+
     public function newWorker(Request $request)
     {
         $this->validate($request, [
@@ -81,6 +83,10 @@ class PersonStatusController extends Controller
             'wid' => trim($request->wid),
         ]);
 
+
+        $dons = 0;
+        $nons = 0;
+        $rons = 0;
         if ($request->status == 'nurse') {
             $nurse = Nurse::create([
                 'nid' => trim($request->wid),
@@ -90,7 +96,6 @@ class PersonStatusController extends Controller
                 'nid' => trim($nurse->nid),
                 'shiftid' => trim($request->shift),
             ]);
-
         } else if ($request->status == 'doctor') {
             $doctor = Doctor::create([
                 'did' => trim($request->wid),
@@ -100,9 +105,8 @@ class PersonStatusController extends Controller
                 'did' => trim($doctor->did),
                 'shiftid' => trim($request->shift),
             ]);
-
-        } elseif ($request->status == 'receptionist') {
-            $receptionist = Rons::create([
+        } else if ($request->status == 'receptionist') {
+            $receptionist = Receptionist::create([
                 'rid' => trim($request->wid),
             ]);
 
@@ -110,10 +114,9 @@ class PersonStatusController extends Controller
                 'rid' => trim($receptionist->rid),
                 'shiftid' => trim($request->shift),
             ]);
-
         }
 
-        if (($worker) && ($nons || $dons || $rons)) {
+        if (($worker) && ($dons || $nons || $rons)) {
             return redirect()->route('status')->with(['success' => 'Success']);
         } else {
             return redirect()->route('status')->with(['error' => 'Failed']);

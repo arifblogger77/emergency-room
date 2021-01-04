@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function query(Request $request)
+    {
+        $this->validate($request, [
+            'query' => $request->query,
+        ]);
+    }
 }

@@ -12,7 +12,7 @@ class Med extends Model
 
     protected $primaryKey = 'px';
     protected $table = 'med';
-    protected $fillable = ['pid', 'did', 'med', 'dosage', 'medfrom', 'medto', 'howoften'];
+    protected $fillable = ['pid', 'did', 'medication_id', 'dosage', 'medfrom', 'medto', 'howoften'];
     public $timestamps = false;
 
     public function doctor()
@@ -27,6 +27,6 @@ class Med extends Model
 
     public function medication()
     {
-        return $this->belongsTo(Medication::class, 'med', 'name');
+        return $this->belongsTo(Medication::class, 'medication_id', 'id');
     }
 }

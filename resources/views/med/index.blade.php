@@ -37,14 +37,15 @@
                                     @endisset
                                 </td>
                                 <td>
-                                    @isset($m->doctor->person)
-                                        {{ $m->doctor->person->firstname }}
-                                        {{ $m->doctor->person->middlename }}
-                                        {{ $m->doctor->person->lastname }}
+                                    @isset($m->doctor->worker->person)
+                                        {{ $m->doctor->worker->person->firstname }}
+                                        {{ $m->doctor->worker->person->middlename }}
+                                        {{ $m->doctor->worker->person->lastname }}
                                     @endisset
                                 </td>
                                 <td>
-                                    @isset($m->medication->name)
+                                    @isset($m->medication)
+                                        {{ $m->medication->name }}
                                     @endisset
                                 </td>
                                 <td>{{ $m->dosage }}</td>
