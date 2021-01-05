@@ -1,0 +1,39 @@
+    CREATE OR REPLACE FUNCTION public.personcheck() RETURNS trigger
+        LANGUAGE plpgsql
+        AS $$
+    BEGIN
+        IF LENGTH(NEW.firstname) = 0 THEN
+            RAISE EXCEPTION 'Firstname must not be empty.';
+        END IF;
+
+        IF LENGTH(NEW.lastname) = 0 THEN
+            RAISE EXCEPTION 'Lastname must not be empty.';
+        END IF;
+
+        RETURN NEW;
+        END;
+    $$;
+
+
+    ALTER FUNCTION public.personcheck() OWNER TO postgres;
+
+    CREATE TRIGGER personcheck BEFORE INSERT ON public.person FOR EACH ROW EXECUTE FUNCTION public.personcheck();
+
+
+  CREATE OR REPLACE FUNCTION public.bedcheck() RETURNS trigger
+        LANGUAGE plpgsql
+        AS $$
+    BEGIN
+        IF LENGTH(NEW.number) = 0 THEN
+            RAISE EXCEPTION 'Number must not be empty.';
+        END IF;
+
+        RETURN NEW;
+        END;
+    $$;
+
+
+    ALTER FUNCTION public.bedcheck() OWNER TO postgres;
+
+    CREATE TRIGGER bedcheck BEFORE INSERT ON public.bed FOR EACH ROW EXECUTE FUNCTION public.bedcheck();
+

@@ -23,7 +23,7 @@
   | Beda              | v | v | v | v | Done      |
   | Adm               | v | v | x | v | Done      |
   | Casedoc && Triage | v | v | x | v | Done      |
-  | Supby && Meda     |
+  | Supby && Meda     | v | v | x | v | Done      |
 
   ---
 
@@ -73,5 +73,6 @@
     - Setup Project
       1. Open terminal with path the project
       2. Run `php artisan migrate:fresh --seed`
-      3. Run `php artisan serve`
-      4. Open the url
+      3. Open file `trigger.txt` and copy to query tool on the pg admin
+      4. Run `php artisan serve`
+      5. Open the url
