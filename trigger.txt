@@ -1,39 +1,65 @@
-    CREATE OR REPLACE FUNCTION public.personcheck() RETURNS trigger
-        LANGUAGE plpgsql
-        AS $$
-    BEGIN
-        IF LENGTH(NEW.firstname) = 0 THEN
-            RAISE EXCEPTION 'Firstname must not be empty.';
-        END IF;
+CREATE OR REPLACE FUNCTION public.personcheck() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF LENGTH(NEW.firstname) = 0 THEN
+        RAISE EXCEPTION 'Firstname must not be empty.';
+    END IF;
 
-        IF LENGTH(NEW.lastname) = 0 THEN
-            RAISE EXCEPTION 'Lastname must not be empty.';
-        END IF;
+    IF LENGTH(NEW.lastname) = 0 THEN
+        RAISE EXCEPTION 'Lastname must not be empty.';
+    END IF;
 
-        RETURN NEW;
-        END;
-    $$;
-
-
-    ALTER FUNCTION public.personcheck() OWNER TO postgres;
-
-    CREATE TRIGGER personcheck BEFORE INSERT ON public.person FOR EACH ROW EXECUTE FUNCTION public.personcheck();
+    RETURN NEW;
+    END;
+$$;
 
 
-  CREATE OR REPLACE FUNCTION public.bedcheck() RETURNS trigger
-        LANGUAGE plpgsql
-        AS $$
-    BEGIN
-        IF LENGTH(NEW.number) = 0 THEN
-            RAISE EXCEPTION 'Number must not be empty.';
-        END IF;
+ALTER FUNCTION public.personcheck() OWNER TO postgres;
 
-        RETURN NEW;
-        END;
-    $$;
+CREATE TRIGGER personcheck BEFORE INSERT ON public.person FOR EACH ROW EXECUTE FUNCTION public.personcheck();
 
 
-    ALTER FUNCTION public.bedcheck() OWNER TO postgres;
+CREATE OR REPLACE FUNCTION public.bedcheck() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF LENGTH(NEW.number) = 0 THEN
+        RAISE EXCEPTION 'Number must not be empty.';
+    END IF;
 
-    CREATE TRIGGER bedcheck BEFORE INSERT ON public.bed FOR EACH ROW EXECUTE FUNCTION public.bedcheck();
+    RETURN NEW;
+    END;
+$$;
 
+
+ALTER FUNCTION public.bedcheck() OWNER TO postgres;
+
+CREATE TRIGGER bedcheck BEFORE INSERT ON public.bed FOR EACH ROW EXECUTE FUNCTION public.bedcheck();
+
+
+CREATE OR REPLACE FUNCTION public.addresscheck() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF LENGTH(NEW.province) = 0 THEN
+		RAISE EXCEPTION 'Province must not be empty.';
+	END IF;
+	IF LENGTH(NEW.city) = 0 THEN
+		RAISE EXCEPTION 'City must not be empty.';
+	END IF;
+	IF LENGTH(NEW.street) = 0 THEN
+		RAISE EXCEPTION 'Street must not be empty.';
+	END IF;
+	IF LENGTH(NEW.streetno) = 0 THEN
+		RAISE EXCEPTION 'Streetno must not be empty.';
+	END IF;
+
+    RETURN NEW;
+    END;
+$$;
+
+
+ALTER FUNCTION public.addresscheck() OWNER TO postgres;
+
+CREATE TRIGGER addresscheck BEFORE INSERT ON public.address FOR EACH ROW EXECUTE FUNCTION public.addresscheck();
