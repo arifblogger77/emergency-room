@@ -10,7 +10,9 @@ class Adm extends Model
     use HasFactory;
 
     protected $table = 'adm';
+
     public $timestamps = false;
+
     protected $fillable = ['pid', 'rid', 'shiftid', 'admission'];
 
     public function patient()

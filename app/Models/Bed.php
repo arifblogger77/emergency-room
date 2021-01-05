@@ -14,6 +14,14 @@ class Bed extends Model
     protected $fillable = ['number'];
     public $timestamps = false;
 
+    public $incrementing = false;
+
+    protected $casts = [
+        'number' => 'string',
+    ];
+
+    protected $keyType = 'string';
+
     protected $primaryKey = 'number';
 
     public function beda()

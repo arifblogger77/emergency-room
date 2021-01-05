@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BedaController;
+use Doctrine\DBAL\Schema\Index;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,12 @@ Route::get('/welcome', function () {
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/interactive', 'HomeController@interactive')->name('home.interactive');
+
+// route interactive
+Route::get('/interactive', 'InteractiveController@index')->name('interactive');
+Route::post('/interactive/simple', 'InteractiveController@simple')->name('interactive.simple');
+Route::post('/interactive/normal', 'InteractiveController@normal')->name('interactive.normal');
+Route::get('/interactive/list-table', 'InteractiveController@listTables')->name('interactive.list-table');
 
 //route person
 Route::get('/person', 'PersonController@index')->name('person');
@@ -96,3 +103,19 @@ Route::get('/worker-shift/edit-nurse/{id}', 'WorkerShiftController@editNons')->n
 Route::put('/worker-shift/update-nurse/{id}', 'WorkerShiftController@updateNons')->name('nurse.update');
 Route::get('/worker-shift/edit-receptionist/{id}', 'WorkerShiftController@editRons')->name('receptionist.edit');
 Route::put('/worker-shift/update-receptionist/{id}', 'WorkerShiftController@updateRons')->name('receptionist.update');
+
+//beda
+Route::get('/beda', 'BedaController@index')->name('beda');
+Route::get('/beda/add', 'BedaController@add')->name('beda.add');
+Route::post('beda/new', 'BedaController@new')->name('beda.new');
+Route::get('/beda/edit/{id}', 'BedaController@edit')->name('beda.edit');
+Route::put('/beda/update/{id}', 'BedaController@update')->name('beda.update');
+Route::get('/beda/delete/{id}', 'BedaController@delete')->name('beda.delete');
+
+//adm
+Route::get('/adm', 'AdmController@index')->name('adm');
+Route::get('/adm/add', 'AdmController@add')->name('adm.add');
+Route::post('adm/new', 'AdmController@new')->name('adm.new');
+Route::get('/adm/edit/{id}', 'AdmController@edit')->name('adm.edit');
+Route::put('/adm/update/{id}', 'AdmController@update')->name('adm.update');
+Route::get('/adm/delete/{id}', 'AdmController@delete')->name('adm.delete');

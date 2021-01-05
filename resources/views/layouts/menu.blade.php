@@ -26,6 +26,12 @@
             <a class="dropdown-item" href="{{ route('med') }}">
                 {{ __('Med') }}
             </a>
+            <a class="dropdown-item" href="{{ route('beda') }}">
+                {{ __('Beda') }}
+            </a>
+            <a class="dropdown-item" href="{{ route('adm') }}">
+                {{ __('Admission') }}
+            </a>
         </div>
 
     </li>

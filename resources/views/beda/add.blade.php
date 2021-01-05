@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('scripts')
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             $('.select2-single').select2({
                 theme: 'bootstrap4',
@@ -31,16 +31,55 @@
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">
-                Add New
+                Add Beda
             </div>
             <div class="card-body">
-                <a href="{{ route('shift') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('beda') }}" class="btn btn-primary">Back</a>
                 <br />
                 <br />
 
-                <form method="post" action="{{ route('shift.new') }}">
+                <form method="post" action="{{ route('beda.new') }}">
 
                     {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <label>Patient</label>
+                        <select class="form-control select2-single" name="pid">
+                            @forelse ($patient as $p)
+                                <option value="{{ $p->pid }}">{{ $p->person->firstname }} {{ $p->person->middlename }}
+                                    {{ $p->person->lastname }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
+
+                        @if ($errors->has('pid'))
+                            <div class="text-danger">
+                                {{ $errors->first('pid') }}
+                            </div>
+                        @endif
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bed Number</label>
+                        <select class="form-control select2-single" name="bedno" type="text">
+                            @forelse ($bed as $b)
+                                <option value="{{ $b->number }}">{{ $b->number }}
+                                </option>
+                            @empty
+                                <option value="">-</option>
+                            @endforelse
+                        </select>
+
+                        @if ($errors->has('bedno'))
+                            <div class="text-danger">
+                                {{ $errors->first('bedno') }}
+                            </div>
+                        @endif
+
+                    </div>
 
                     <div class="form-group">
                         <label>From</label>

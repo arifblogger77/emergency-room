@@ -18,7 +18,8 @@ class ShiftController extends Controller
         return view('shift.add');
     }
 
-    function new (Request $request) {
+    function new(Request $request)
+    {
         $this->validate($request, [
             'from' => 'required',
             'to' => 'required',
