@@ -12,6 +12,7 @@ class Triageby extends Model
     protected $table = 'triageby';
     public $timestamps = false;
     protected $fillable = ['pid', 'did'];
+    protected $primaryKey = 'pid';
 
     public function patient()
     {

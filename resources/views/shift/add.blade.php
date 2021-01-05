@@ -7,7 +7,6 @@
                 theme: 'bootstrap4',
             });
         });
-
         $(function() {
             $('#from').datetimepicker({
                 format: 'YYYY-MM-DD HH:mm:ss'

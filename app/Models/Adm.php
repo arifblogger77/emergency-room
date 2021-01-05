@@ -11,6 +11,8 @@ class Adm extends Model
 
     protected $table = 'adm';
 
+    protected $primaryKey = 'pid';
+
     public $timestamps = false;
 
     protected $fillable = ['pid', 'rid', 'shiftid', 'admission'];

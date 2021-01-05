@@ -29,6 +29,12 @@
             <a class="dropdown-item" href="{{ route('beda') }}">
                 {{ __('Beda') }}
             </a>
+            <a class="dropdown-item" href="{{ route('doctor-patient') }}">
+                {{ __('Doctor Patient') }}
+            </a>
+            <a class="dropdown-item" href="{{ route('nurse-patient') }}">
+                {{ __('Nurse Patient') }}
+            </a>
             <a class="dropdown-item" href="{{ route('adm') }}">
                 {{ __('Admission') }}
             </a>

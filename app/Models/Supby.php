@@ -18,9 +18,9 @@ class Supby extends Model
         return $this->belongsTo(Bed::class, 'bedno', 'number');
     }
 
-    public function nurse()
+    public function nons()
     {
-        return $this->belongsTo(Nurse::class, 'nid', 'nid');
+        return $this->belongsTo(Nons::class, 'nid', 'nid');
     }
 
     public function shift()

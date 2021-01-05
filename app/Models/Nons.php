@@ -24,4 +24,13 @@ class Nons extends Model
         return $this->belongsTo(Shift::class, 'shiftid', 'shiftid');
     }
 
+    public function meda()
+    {
+        return $this->hasOne(Meda::class, 'nid', 'nid');
+    }
+
+    public function supby()
+    {
+        return $this->hasOne(Supby::class, 'nid', 'nid');
+    }
 }

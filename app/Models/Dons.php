@@ -24,4 +24,8 @@ class Dons extends Model
         return $this->belongsTo(Shift::class, 'shiftid', 'shiftid');
     }
 
+    public function casedoc()
+    {
+        return $this->belongsTo(Casedoc::class, 'did', 'did');
+    }
 }

@@ -44,9 +44,4 @@ class Shift extends Model
     {
         return $this->hasOne(Rons::class, 'shiftid', 'shiftid');
     }
-
-    public function meda()
-    {
-        return $this->hasOne(Meda::class, 'shiftid', 'shiftid');
-    }
 }

@@ -47,48 +47,6 @@ class AdmController extends Controller
         }
     }
 
-    public function edit($id)
-    {
-        $shift = Shift::all();
-        $receptionist = Receptionist::all();
-        $patient = Patient::all();
-        $adm = Adm::find($id);
-
-        if (empty($adm)) {
-            return redirect()->route('adm');
-        }
-
-        return view('adm.edit', ['adm' => $adm, 'patient' => $patient, 'receptionist' => $receptionist, 'shift' => $shift]);
-    }
-
-    public function update($id, Request $request)
-    {
-        $this->validate($request, [
-            'pid' => 'required',
-            'rid' => 'required',
-            'shiftid' => 'required',
-            'admission' => 'required',
-        ]);
-
-        $adm = Adm::find($id);
-
-        if (empty($adm)) {
-            return redirect()->route('adm');
-        }
-
-        $adm->pid = trim($request->pid);
-        $adm->rid = trim($request->rid);
-        $adm->shiftid = trim($request->shiftid);
-        $adm->admission = trim($request->admission);
-        $adm->save();
-
-        if ($adm) {
-            return redirect()->route('adm')->with(['success' => 'Success']);
-        } else {
-            return redirect()->route('adm')->with(['error' => 'Failed']);
-        }
-    }
-
     public function delete($id)
     {
         $adm = Adm::find($id);

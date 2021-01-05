@@ -25,18 +25,13 @@ class Doctor extends Model
         return $this->belongsTo(Worker::class, 'did', 'wid');
     }
 
-    public function casedoc()
-    {
-        return $this->hasMany(Casedoc::class, 'did', 'did');
-    }
-
     public function dons()
     {
         return $this->hasOne(Dons::class, 'did', 'did');
     }
 
-    public function triage()
+    public function triageby()
     {
-        return $this->hasMany(Triage::class, 'did', 'did');
+        return $this->hasMany(Triageby::class, 'did', 'did');
     }
 }

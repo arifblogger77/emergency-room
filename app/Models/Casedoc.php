@@ -12,20 +12,20 @@ class Casedoc extends Model
     protected $table = 'casedoc';
     public $timestamps = false;
     protected $fillable = ['pid', 'did', 'shiftid'];
+    protected $primaryKey = 'pid';
 
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'pid', 'pid');
     }
 
-    public function doctor()
+    public function dons()
     {
-        return $this->belongsTo(Doctor::class, 'did', 'did');
+        return $this->belongsTo(Dons::class, 'did', 'did');
     }
 
     public function shift()
     {
         return $this->belongsTo(Shift::class, 'shiftid', 'shiftid');
     }
-
 }

@@ -12,15 +12,15 @@ class Meda extends Model
     protected $table = 'meda';
     public $timestamps = false;
     protected $primaryKey = 'px';
-    protected $fillable = ['nid', 'shiftid'];
+    protected $fillable = ['px', 'nid', 'shiftid'];
 
-    public function nurse()
+    public function nons()
     {
-        return $this->belongsTo(Nurse::class, 'nid', 'nid');
+        return $this->belongsTo(Nons::class, 'nid', 'nid');
     }
 
-    public function shift()
+    public function med()
     {
-        return $this->belongsTo(Shift::class, 'shiftid', 'shiftid');
+        return $this->belongsTo(Med::class, 'px', 'px');
     }
 }

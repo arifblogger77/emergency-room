@@ -40,13 +40,12 @@
                                 </td>
                                 <td>
                                     @isset($a->shift)
-                                        {{ $a->shift->worker->from }} -
-                                        {{ $a->shift->worker->to }}
+                                        {{ $a->shift->from }} -
+                                        {{ $a->shift->to }}
                                     @endisset
                                 </td>
                                 <td>{{ $a->admission }}</td>
                                 <td>
-                                    <a href="{{ route('adm.edit', ['id' => $a->pid]) }}" class="btn btn-warning">Edit</a>
                                     <a href="{{ route('adm.delete', ['id' => $a->pid]) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

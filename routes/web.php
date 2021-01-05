@@ -116,6 +116,22 @@ Route::get('/beda/delete/{id}', 'BedaController@delete')->name('beda.delete');
 Route::get('/adm', 'AdmController@index')->name('adm');
 Route::get('/adm/add', 'AdmController@add')->name('adm.add');
 Route::post('adm/new', 'AdmController@new')->name('adm.new');
-Route::get('/adm/edit/{id}', 'AdmController@edit')->name('adm.edit');
-Route::put('/adm/update/{id}', 'AdmController@update')->name('adm.update');
 Route::get('/adm/delete/{id}', 'AdmController@delete')->name('adm.delete');
+
+//casedoc && triage
+Route::get('/doctor-patient', 'DoctorPatientController@index')->name('doctor-patient');
+Route::get('/doctor-patient/add-casedoc', 'DoctorPatientController@addCasedoc')->name('casedoc.add');
+Route::post('/doctor-patient/new-casedoc', 'DoctorPatientController@newCasedoc')->name('casedoc.new');
+Route::get('/doctor-patient/delete-casedoc/{id}', 'DoctorPatientController@deleteCasedoc')->name('casedoc.delete');
+Route::get('/doctor-patient/add-triageby', 'DoctorPatientController@addTriageby')->name('triageby.add');
+Route::post('/doctor-patient/new-triageby', 'DoctorPatientController@newTriageby')->name('triageby.new');
+Route::get('/doctor-patient/delete-triageby/{id}', 'DoctorPatientController@deleteTriageby')->name('triageby.delete');
+
+//supby && meda
+Route::get('/nurse-patient', 'NursePatientController@index')->name('nurse-patient');
+Route::get('/nurse-patient/add-supby', 'NursePatientController@addSupby')->name('supby.add');
+Route::post('/nurse-patient/new-supby', 'NursePatientController@newSupby')->name('supby.new');
+Route::get('/nurse-patient/delete-supby/{id}', 'NursePatientController@deleteSupby')->name('supby.delete');
+Route::get('/nurse-patient/add-meda', 'NursePatientController@addMeda')->name('meda.add');
+Route::post('/nurse-patient/new-meda', 'NursePatientController@newMeda')->name('meda.new');
+Route::get('/nurse-patient/delete-meda/{id}', 'NursePatientController@deleteMeda')->name('meda.delete');

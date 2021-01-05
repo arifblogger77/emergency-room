@@ -29,4 +29,9 @@ class Med extends Model
     {
         return $this->belongsTo(Medication::class, 'medication_id', 'id');
     }
+
+    public function meda()
+    {
+        return $this->hasOne(Meda::class, 'px', 'px');
+    }
 }

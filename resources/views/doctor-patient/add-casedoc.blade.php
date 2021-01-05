@@ -8,22 +8,6 @@
             });
         });
 
-        $(function() {
-            $('#from').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss'
-            });
-            $('#to').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss',
-                useCurrent: false //Important! See issue #1075
-            });
-            $("#from").on("dp.change", function(e) {
-                $('#to').data("DateTimePicker").minDate(e.date);
-            });
-            $("#to").on("dp.change", function(e) {
-                $('#from').data("DateTimePicker").maxDate(e.date);
-            });
-        });
-
     </script>
 @endpush
 
@@ -31,14 +15,14 @@
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">
-                Add Beda
+                Add New Casedoc
             </div>
             <div class="card-body">
-                <a href="{{ route('adm') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('doctor-patient') }}" class="btn btn-primary">Back</a>
                 <br />
                 <br />
 
-                <form method="post" action="{{ route('adm.new') }}">
+                <form method="post" action="{{ route('casedoc.new') }}">
 
                     {{ csrf_field() }}
 
@@ -63,21 +47,21 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Receptionist</label>
-                        <select class="form-control select2-single" name="rid">
-                            @forelse ($receptionist as $r)
-                                <option value="{{ $r->rid }}">{{ $r->worker->person->firstname }}
-                                    {{ $r->worker->person->middlename }}
-                                    {{ $r->worker->person->lastname }}
+                        <label>Doctor</label>
+                        <select class="form-control select2-single" name="did">
+                            @forelse ($dons as $d)
+                                <option value="{{ $d->did }}">{{ $d->doctor->worker->person->firstname }}
+                                    {{ $d->doctor->worker->person->middlename }}
+                                    {{ $d->doctor->worker->person->lastname }}
                                 </option>
                             @empty
                                 <option value="">-</option>
                             @endforelse
                         </select>
 
-                        @if ($errors->has('rid'))
+                        @if ($errors->has('did'))
                             <div class="text-danger">
-                                {{ $errors->first('rid') }}
+                                {{ $errors->first('did') }}
                             </div>
                         @endif
 
@@ -86,8 +70,8 @@
                     <div class="form-group">
                         <label>Shift</label>
                         <select class="form-control select2-single" name="shiftid">
-                            @forelse ($shift as $s)
-                                <option value="{{ $s->shiftid }}">{{ $s->from }} {{ $s->to }}
+                            @forelse ($dons as $s)
+                                <option value="{{ $s->shiftid }}">{{ $s->shift->from }} - {{ $s->shift->to }}
                                 </option>
                             @empty
                                 <option value="">-</option>
@@ -97,19 +81,6 @@
                         @if ($errors->has('shiftid'))
                             <div class="text-danger">
                                 {{ $errors->first('shiftid') }}
-                            </div>
-                        @endif
-
-                    </div>
-
-                    <div class="form-group">
-                        <label>Admission</label>
-                        <input type="text" name="admission" class="form-control" id="admission"
-                            placeholder="Year-month-date Hour:minute:second">
-
-                        @if ($errors->has('admission'))
-                            <div class="text-danger">
-                                {{ $errors->first('admission') }}
                             </div>
                         @endif
 
